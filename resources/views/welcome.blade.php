@@ -101,7 +101,7 @@
             <section class="container p-4">
                 <div class="row shadow align-items-center rounded-5">
                     <div class="col-lg-3 py-5 text-center">
-                        <h1 class="display-3 fw-bold text-primary"><span>13,655</span></h1>
+                        <h1 class="display-3 fw-bold text-primary"><span>135</span></h1>
                         <span>Total Pendaftar</span>
                     </div>
                     <div class="col-lg-9 bg-primary rounded-5">
