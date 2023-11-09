@@ -107,7 +107,7 @@
                     <div class="col-lg-9 bg-primary rounded-5">
                         <div class="row py-5 text-white align-items-center">
                             <div class="col-lg-4 text-center">
-                                <h1 class="display-3 fw-bold"><span>6</span></h1>
+                                <h1 class="display-3 fw-bold"><span>4</span></h1>
                                 <span>Hari Lagi</span>
                             </div>
                             <div class="col-lg-8 px-5 py-3 border-start border-4 d-none d-lg-block">
