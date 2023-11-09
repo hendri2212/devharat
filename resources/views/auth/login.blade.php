@@ -4,10 +4,11 @@
             {{-- <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a> --}}
-            {{-- <a href="#" class="text-decoration-none text-reset">
-                <h1 class="fw-bold mb-0">Dev<span class="text-success">Harat</span></h1>
-                <p class="mb-0 fw-bold">Developer Harat Kotabaru</p>
-            </a> --}}
+            <a href="#" class="text-decoration-none text-reset">
+                <h1 class="fw-bold text-left mb-0 fs-1">Dev<span class="text-success">Harat</span></h1>
+                <p class="mb-0 fw-bold text-left fs-5">Developer Harat Kotabaru</p>
+            </a>
+            {{-- <img src="{{ asset('gambar/monitor.png') }}" alt="devHarat" class="img-fluid" width="50px"> --}}
         </x-slot>
 
         <!-- Session Status -->
@@ -44,7 +45,9 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            {{-- <div class="flex items-center justify-end mt-4"> --}}
+            <div class="flex items-center justify-content-between mt-4">
+                <a href="/register" class="btn btn-info btn-sm text-white">DAFTAR</a>
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}

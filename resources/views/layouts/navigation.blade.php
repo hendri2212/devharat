@@ -5,14 +5,19 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    {{-- <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                    </a> --}}
+                    <a href="/idea" class="text-decoration-none text-reset">
+                        <h1 class="fw-bold text-left mb-0 fs-3">Dev<span class="text-success">Harat</span></h1>
+                        {{-- <p class="mb-0 fw-bold text-left fs-5">Developer Harat Kotabaru</p> --}}
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"> --}}
+                    <x-nav-link href="/idea">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>

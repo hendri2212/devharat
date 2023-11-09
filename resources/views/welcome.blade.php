@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Developer Harat Kotabaru</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('gambar/monitor.png') }}">
 
         <!-- Styles -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -21,6 +22,20 @@
             }
             #main {
                 padding-top: 100px;
+            }
+            #progDepan {
+                border-radius: 2rem 0 0 2rem;
+            }
+            #progBelakang {
+                border-radius: 0 2rem 2rem 0;
+            }
+            @media only screen and (max-width: 700px) {
+                #progDepan {
+                    border-radius: 2rem 2rem 0 0;
+                }
+                #progBelakang {
+                    border-radius: 0 0 2rem 2rem;
+                }
             }
             @media only screen and (min-width: 700px) {
                 .haratTitle {
@@ -44,7 +59,8 @@
                     <ul class="navbar-nav">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a>
+                                {{-- <a class="nav-link active" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a> --}}
+                                <a class="nav-link active" aria-current="page" href="{{ url('/idea') }}">Dashboard</a>
                             </li>
                         @else
                             <li class="nav-item">
@@ -69,7 +85,7 @@
                         <p class="text-muted">Kirimkan ide kreatif Anda di bidang Teknologi Digital / Aplikasi untuk kemajuan Kabupaten Kotabaru di bidang Teknologi. </p>
                         <p class="fw-bolder">Batas Pendaftaran: <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="my-auto ms-2 me-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256,8C119,8,8,119,8,256S119,504,256,504,504,393,504,256,393,8,256,8Zm92.49,313h0l-20,25a16,16,0,0,1-22.49,2.5h0l-67-49.72a40,40,0,0,1-15-31.23V112a16,16,0,0,1,16-16h32a16,16,0,0,1,16,16V256l58,42.5A16,16,0,0,1,348.49,321Z"></path></svg>06 Nov 2023 s/d 13 Nov 2023</p>
                         <div class="d-grid d-md-flex gap-2 gap-md-3">
-                            <a class="btn btn-lg btn-danger rounded-1" target="_blank" rel="noopener noreferrer" href="/register">
+                            <a class="btn btn-lg btn-danger rounded-1" target="_blank" rel="noopener noreferrer" href="/idea/create">
                                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="me-1 mb-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M446.7 98.6l-67.6 318.8c-5.1 22.5-18.4 28.1-37.3 17.5l-103-75.9-49.7 47.8c-5.5 5.5-10.1 10.1-20.7 10.1l7.4-104.9 190.9-172.5c8.3-7.4-1.8-11.5-12.9-4.1L117.8 284 16.2 252.2c-22.1-6.9-22.5-22.1 4.6-32.7L418.2 66.4c18.4-6.9 34.5 4.1 28.5 32.2z"></path>
                                 </svg>
@@ -78,7 +94,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 my-auto">
-                        <img alt="kotabaru" fetchpriority="high" width="1000" height="1000" decoding="async" data-nimg="1" class="img-fluid rounded-5 mt-2" src="{{ asset('gambar/kotabaru.jpeg') }}">
+                        <img alt="kotabaru" fetchpriority="high" width="1000" height="1000" decoding="async" data-nimg="1" class="img-fluid rounded-5 mt-2" src="{{ asset('gambar/kotabaru.png') }}">
                     </div>
                 </div>
             </section>
@@ -108,9 +124,9 @@
                 <div class="row rounded-5">
                     {{-- <div class="col-lg-5 d-flex flex-column align-items-center justify-content-center p-0 rounded-start-5 SectionAbout_border_radius_start__Gy2Mq" style="background: url(https://www.devhandal.id/assets/img/img-programming.png)"> --}}
                     <div class="col-lg-5 d-flex flex-column align-items-center justify-content-center p-0 SectionAbout_border_radius_start__Gy2Mq">
-                        <img src="{{ asset('gambar/programmer.jpg') }}" alt="programmer kotabaru" id="progDepan" class="img-fluid rounded-start-5">
+                        <img src="{{ asset('gambar/programmer.jpg') }}" alt="programmer kotabaru" id="progDepan" class="img-fluid">
                     </div>
-                    <div id="progBelakang" class="col-lg-7 text-white px-auto px-md-5 d-flex flex-column align-items-start justify-content-center bg-success rounded-end-5">
+                    <div id="progBelakang" class="col-lg-7 text-white px-auto px-md-5 d-flex flex-column align-items-start justify-content-center bg-success">
                         <h2 class="title fw-bolder mb-3">Apa itu DevHarat?</h2>
                         <p class="lh-lg"><strong class="badge text-bg-light">Developer Harat</strong> adalah sebuah komunitas developer aplikasi atau kumpulan para programmer yang berada di Kabupaten Kotabaru. Diharapkan dengan adanya komunitas ini akan meningkatkan kemajuan Teknologi Digital di Kabupaten Kotabaru yang kemudian juga akan berdampak pada perkembangan ekonomi daerah.</p>
                         <p class="lh-lg">Pada ajang kali ini <span class="badge text-bg-light">#DevHarat</span> mencari dan mengumpulkan informasi atau ide-ide kreatif dari masyarakat di bidang Teknologi Aplikasi untuk kemudian di realisasikan dan dapat digunakan masyarakat dengan baik dan sesuai kebutuhan.</p>
@@ -119,7 +135,7 @@
             </section>
             <section class="container py-5 px-4">
                 <div class="row justify-content-between">
-                    <a class="btn btn-lg btn-danger rounded-1" target="_blank" rel="noopener noreferrer" href="/register">
+                    <a class="btn btn-lg btn-danger rounded-1" target="_blank" rel="noopener noreferrer" href="/idea/create">
                         <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="me-1 mb-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                             <path d="M446.7 98.6l-67.6 318.8c-5.1 22.5-18.4 28.1-37.3 17.5l-103-75.9-49.7 47.8c-5.5 5.5-10.1 10.1-20.7 10.1l7.4-104.9 190.9-172.5c8.3-7.4-1.8-11.5-12.9-4.1L117.8 284 16.2 252.2c-22.1-6.9-22.5-22.1 4.6-32.7L418.2 66.4c18.4-6.9 34.5 4.1 28.5 32.2z"></path>
                         </svg>
