@@ -156,7 +156,7 @@
                         else
                             $_SESSION['views']=1; 
                             
-                        echo"views = ".$_SESSION['views']; 
+                        // echo"views = ".$_SESSION['views']; 
                     
                     ?>
                     <div class="col-lg-6 my-5 my-lg-auto">
