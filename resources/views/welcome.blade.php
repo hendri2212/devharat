@@ -107,7 +107,13 @@
                     <div class="col-lg-9 bg-primary rounded-5">
                         <div class="row py-5 text-white align-items-center">
                             <div class="col-lg-4 text-center">
-                                <h1 class="display-3 fw-bold"><span>5</span></h1>
+                                <?php
+                                    $now = time(); // or your date as well
+                                    $your_date = strtotime('2023-11-14 24:00:00');
+                                    $datediff =  $your_date - $now;
+                                    $days_remaining = floor($datediff/(60*60*24));
+                                ?>
+                                <h1 class="display-3 fw-bold"><span><?= $days_remaining ?></span></h1>
                                 <span>Hari Lagi</span>
                             </div>
                             <div class="col-lg-8 px-5 py-3 border-start border-4 d-none d-lg-block">
@@ -141,6 +147,18 @@
                         </svg>
                         Tuliskan Ide Mu
                     </a>
+                    <?php  
+  
+                        session_start(); 
+                        
+                        if(isset($_SESSION['views'])) 
+                            $_SESSION['views'] = $_SESSION['views']+1; 
+                        else
+                            $_SESSION['views']=1; 
+                            
+                        echo"views = ".$_SESSION['views']; 
+                    
+                    ?>
                     <div class="col-lg-6 my-5 my-lg-auto">
                         <h2 class="title fw-bolder">Menjadi bagian dari Dev<span class="text-success">Harat</span></h2>
                         <p class="lh-lg">Konsep / ide kreatif mu dapat membuat perubahan yang lebih baik dan tepat guna bagi Kota tercinta kita yaitu Kotabaru. Tuliskan idemu secara detail mulai dari:</p>
