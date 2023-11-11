@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Data Ide') }}
         </h2>
     </x-slot>
 
@@ -19,7 +19,7 @@
                     <div class="table-responsive">
                         <table class="table table-striped mt-3">
                             <thead>
-                                <tr>
+                                <tr class="whitespace-nowrap ...">
                                     <th>No</th>
                                     <th>Nama Aplikasi</th>
                                     <th colspan="2">Deskripsi Aplikasi</th>

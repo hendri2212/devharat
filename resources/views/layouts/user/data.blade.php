@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Data User') }}
         </h2>
     </x-slot>
 
@@ -12,21 +12,21 @@
                     <form action="/user/{{ $user->id }}" method="POST">
                         @method('PUT')
                         @csrf
-                        <div class="mb-3 row">
-                            <label for="name" class="col-sm-2 col-form-label">Full Name</label>
-                            <div class="col-sm-10">
+                        <div class="mb-3">
+                            <label for="name" class="leading-6 font-semibold text-gray-900">Full Name</label>
+                            <div class="mt-2">
                                 <p class="form-control-plaintext">{{ $user->name }}</p>
                             </div>
                         </div>
-                        <div class="mb-3 row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-10">
+                        <div class="mb-3">
+                            <label for="staticEmail" class="leading-6 font-semibold text-gray-900">Email</label>
+                            <div class="mt-2">
                                 <p class="form-control-plaintext">{{ $user->email }}</p>
                             </div>
                         </div>
-                        <div class="mb-3 row">
-                            <label for="phone" class="col-sm-2 col-form-label">Whatsapp</label>
-                            <div class="col-sm-10">
+                        <div class="mb-3">
+                            <label for="phone" class="leading-6 font-semibold text-gray-900">Whatsapp</label>
+                            <div class="mt-2">
                                 <input type="phone" class="form-control" id="phone" name="phone" value="{{ $user->phone }}">
                             </div>
                         </div>
