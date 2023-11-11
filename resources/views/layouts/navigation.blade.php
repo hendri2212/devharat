@@ -23,6 +23,11 @@
                     <x-nav-link href="/user/{{ Auth::user()->id }}">
                         {{ __('Data User') }}
                     </x-nav-link>
+                    @if (Auth::user()->id==1)
+                        <x-nav-link href="/member">
+                            {{ __('Data Member') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
