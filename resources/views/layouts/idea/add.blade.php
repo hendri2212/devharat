@@ -12,7 +12,7 @@
                     <form action="/idea" method="POST">
                         @csrf
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="app_name" class="form-label">Judul / Nama Aplikasi</label>
                                     <input type="text" class="form-control" name="app_name" id="app_name" placeholder="Nama aplikasi kamu" required>
@@ -26,7 +26,7 @@
                                     <textarea name="excellence" id="excellence" class="form-control border-secondary rounded-0" cols="30" rows="5" placeholder="Tuliskan detail manfaat ide aplikasi" required></textarea>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="app_user" class="form-label">Pengguna Aplikasi</label>
                                     <input type="text" class="form-control" id="app_user" name="app_user" placeholder="Siapa yang menggunakan aplikasi" required>
