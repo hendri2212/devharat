@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Idea;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class IdeaController extends Controller
 {
@@ -16,12 +17,11 @@ class IdeaController extends Controller
     public function index()
     {
         if (Auth::user()->id==1) {
-            $ide = Idea::all();
+            $ide = Idea::with('user')->get();
         } else {
             $ide = Idea::where('user_id', Auth::user()->id)->get();
         }
         return view('layouts.idea.data', ['ide' => $ide]);
-        // return view('layouts.idea.data', compact(['ide']));
     }
 
     public function create() {
@@ -93,5 +93,13 @@ class IdeaController extends Controller
     public function destroy(Idea $idea)
     {
         //
+    }
+
+    public function ideal() {
+        if (Auth::user()->id==1) {
+            $ideal = Idea::with('user')->orderBy('user_id', 'asc')->get();
+            return view('layouts.idea.ideal', ['ideal' => $ideal]);
+        }
+        return redirect('idea');
     }
 }

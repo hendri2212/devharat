@@ -27,6 +27,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('member', MemberController::class);
     Route::resource('idea', IdeaController::class);
     Route::resource('user', UserController::class);
+
+    // sementara
+    Route::get('/ideal', [IdeaController::class, 'ideal']);
 });
 
 require __DIR__.'/auth.php';
