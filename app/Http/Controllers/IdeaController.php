@@ -63,7 +63,9 @@ class IdeaController extends Controller
      */
     public function show(Idea $idea)
     {
-        //
+        // $ide = Idea::where('user_id', Auth::user()->id)->get();
+        $ide = Idea::find($idea->id);
+        return view('layouts.idea.show', ['ide' => $ide]);
     }
 
     /**

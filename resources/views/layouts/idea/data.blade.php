@@ -32,7 +32,9 @@
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $data->app_name }}</td>
                                     <td>{{ $data->description }}</td>
-                                    <td><a href="#" class="btn btn-success btn-sm">Lihat</a></td>
+                                    <td>
+                                        <a href="idea/{{ $data->id }}" class="rounded-md text-white px-3 py-1.5 bg-green-600">Lihat</a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
