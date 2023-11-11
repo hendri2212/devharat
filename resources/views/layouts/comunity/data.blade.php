@@ -22,9 +22,9 @@
                             @foreach ($member as $key => $data)
                             <tr>
                                 <td class="border p-2 text-center">{{ $key+1 }}</td>
-                                <td class="border p-2 text-center">{{ $data->name }}</td>
-                                <td class="border p-2 text-center">{{ $data->email }}</td>
-                                <td class="border p-2 text-center">{{ $data->phone }}</td>
+                                <td class="border p-2">{{ $data->name }}</td>
+                                <td class="border p-2">{{ $data->email }}</td>
+                                <td class="border p-2">{{ $data->phone }}</td>
                             </tr>
                             @endforeach
                         </tbody>

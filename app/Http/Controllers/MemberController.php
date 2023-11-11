@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
@@ -14,8 +15,12 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $member = User::all();
-        return view('layouts.comunity.data', ['member' => $member]);
+        if (Auth::user()->id==1) {
+            $member = User::all();
+            return view('layouts.comunity.data', ['member' => $member]);
+        } else {
+            return redirect('/idea');
+        }
     }
 
     /**
