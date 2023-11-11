@@ -31,7 +31,7 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $data->app_name }}</td>
-                                    <td>{{ $data->description }}</td>
+                                    <td>{{ Str::limit($data->description, 250, '...') }}</td>
                                     <td>
                                         <a href="idea/{{ $data->id }}" class="rounded-md text-white px-3 py-1.5 bg-green-600">Lihat</a>
                                     </td>
