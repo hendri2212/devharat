@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\UserController;
 
@@ -15,15 +16,18 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [Controller::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('idea', IdeaController::class)->middleware(['auth']);
-Route::resource('user', UserController::class)->middleware(['auth']);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('idea', IdeaController::class);
+    Route::resource('user', UserController::class);
+});
 
 require __DIR__.'/auth.php';
