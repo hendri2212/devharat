@@ -9,6 +9,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    @if (Auth::user()->phone == '0')
+                        <div class="bg-orange-500 mb-2 p-2 rounded-lg font-bold text-white">
+                            Nomor Whatsapp Anda {{ Auth::user()->phone }}. Silahkan update nomor Whatsapp melalui menu Data User atau klik tombol berikut <a href="/user/{{ Auth::user()->id }}" class='bg-white px-2.5 py-0.5 rounded text-gray-800'>Data User</a>
+                        </div>
+                    @endif
                     <a href="/idea/create" class="btn btn-primary">Tambahkan Ide</a>
                     {{-- You're logged in! --}}
                     <div class="table-responsive">

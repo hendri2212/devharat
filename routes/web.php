@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IdeaController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('idea', IdeaController::class)->middleware(['auth']);
+Route::resource('user', UserController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';
