@@ -25,7 +25,8 @@ class UserController extends Controller
         $update->phone = $request->phone;
         $update->update();
 
-        $ide = Idea::where('user_id', Auth::user()->id)->get();
-        return view('layouts.idea.data', ['ide' => $ide])->with('success', 'Post created successfully!');
+        // $ide = Idea::where('user_id', Auth::user()->id)->get();
+        // return view('layouts.idea.data', ['ide' => $ide])->with('success', 'Post created successfully!');
+        return redirect('idea');
     }
 }

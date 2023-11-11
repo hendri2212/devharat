@@ -15,7 +15,6 @@ class IdeaController extends Controller
      */
     public function index()
     {
-
         $ide = Idea::where('user_id', Auth::user()->id)->get();
         return view('layouts.idea.data', ['ide' => $ide]);
         // return view('layouts.idea.data', compact(['ide']));
@@ -33,21 +32,27 @@ class IdeaController extends Controller
      */
     public function store(Request $request)
     {
-        // return Auth::user()->id;
+        $request->validate([
+            'app_name' => 'required',
+            'description' => 'required',
+            'excellence' => 'required',
+            'app_user' => 'required',
+            'feature' => 'required',
+        ]);
+
         $save = new Idea;
-        $save->app_name     = $request->app_name;
-        $save->description     = $request->description;
-        $save->excellence     = $request->excellence;
-        $save->app_user     = $request->app_user;
-        $save->feature     = $request->feature;
-        $save->user_id     = Auth::user()->id;
-        // $save->password = Hash::make('password');
+        $save->app_name = $request->app_name;
+        $save->description = $request->description;
+        $save->excellence = $request->excellence;
+        $save->app_user = $request->app_user;
+        $save->feature = $request->feature;
+        $save->user_id = Auth::user()->id;
         $save->save();
 
 
-        $ide = Idea::where('user_id', Auth::user()->id)->get();
-        return view('layouts.idea.data', ['ide' => $ide]);
-        // ->with('success', 'Post created successfully!');
+        // $ide = Idea::where('user_id', Auth::user()->id)->get();
+        // return view('layouts.idea.data', ['ide' => $ide])->with('success', 'Post created successfully!');
+        return redirect('idea');
     }
 
     /**

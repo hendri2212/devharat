@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="flex justify-end">
-                            <input type="submit" value="Update" class="rounded-md text-white px-3 py-1.5 bg-primary">
+                            <input type="submit" value="Update" class="rounded-md text-white px-3 py-1.5 bg-blue-600">
                         </div>
                     </form>
                 </div>

@@ -14,7 +14,7 @@
                             Nomor Whatsapp Anda {{ Auth::user()->phone }}. Silahkan update nomor Whatsapp melalui menu Data User atau klik tombol berikut <a href="/user/{{ Auth::user()->id }}" class='bg-white px-2.5 py-0.5 rounded text-gray-800'>Data User</a>
                         </div>
                     @endif
-                    <a href="/idea/create" class="btn btn-primary">Tambahkan Ide</a>
+                    <a href="/idea/create" class="rounded-md text-white px-3 py-1.5 bg-blue-600">Tambahkan Ide</a>
                     {{-- You're logged in! --}}
                     <div class="table-responsive">
                         <table class="table table-striped mt-3">
