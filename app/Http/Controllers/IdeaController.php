@@ -16,11 +16,7 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->id==1) {
-            $ide = Idea::with('user')->get();
-        } else {
-            $ide = Idea::where('user_id', Auth::user()->id)->get();
-        }
+        $ide = Idea::where('user_id', Auth::user()->id)->get();
         return view('layouts.idea.data', ['ide' => $ide]);
     }
 
