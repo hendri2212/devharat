@@ -32,7 +32,7 @@ Route::get('/choice', function () {
 });
 
 Route::get('/verification', function () {
-    return view('verification');
+    return view('verificatiion');
 });
 
 Route::get('/dashboard', function () {
