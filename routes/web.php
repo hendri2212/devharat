@@ -45,7 +45,7 @@ Route::get('/quiz', function () {
 // });
 
 Route::get('/verification', function () {
-    return view('verificatiion');
+    return view('verification');
 });
 
 Route::get('/dashboard', function () {
