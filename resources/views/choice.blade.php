@@ -104,7 +104,6 @@
                         border-radius: 50px;
                         }
                     </style>
-                    <title>Interactive Table</title>
                     </head>
                     <body>
 
