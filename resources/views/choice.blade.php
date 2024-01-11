@@ -60,35 +60,135 @@
                         <h2 class="title fw-bold haratTitle">lorem ipsum</h2>
                         <p class="text-muted">Kirimkan ide kreatif Anda di bidang Teknologi Digital / Aplikasi untuk kemajuan Kabupaten Kotabaru di bidang Teknologi. </p>
                         
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Daftar Minat</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                    <th><button type="button" class="btn btn-primary">Notifications <span class="badge text-bg-secondary">4</span></button></th>
-                    <td><button type="button" class="btn btn-primary">Notifications <span class="badge text-bg-secondary">4</span></button></td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                    <th><button type="button" class="btn btn-primary">Notifications <span class="badge text-bg-secondary">4</span></button></th>
-                    <td><button type="button" class="btn btn-primary">Notifications <span class="badge text-bg-secondary">4</span></button></td>
-                    </tr>
-                    <tr>
-                    <th><button type="button" class="btn btn-primary">Notifications <span class="badge text-bg-secondary">4</span></button></th>
-                    <td><button type="button" class="btn btn-primary">Notifications <span class="badge text-bg-secondary">4</span></button></td>
-                    </tr>
-                    <tr>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
+                        <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+                    <style>
+                        body {
+                        font-family: 'Arial', sans-serif;
+                        }
+
+                        h2 {
+                        margin-top: 20px;
+                        }
+
+                        .table-container {
+                        max-height: 300px;
+                        overflow-y: auto;
+                        }
+
+                        .selectable-row:hover {
+                        cursor: pointer;
+                        background-color: #f2f2f2;
+                        }
+
+                        .selected-row {
+                        background-color: #aaffaa !important;
+                        box-shadow: none; /* Menghilangkan efek cahaya */
+                        }
+
+                        .remove-btn {
+                        cursor: pointer;
+                        color: red;
+                        font-weight: bold;
+                        }
+
+                        .remove-btn:hover {
+                        color: darkred;
+                        }
+
+                        .rounded-pill {
+                        border-radius: 50px;
+                        }
+                    </style>
+                    <title>Interactive Table</title>
+                    </head>
+                    <body>
+
+                    <div class="container">
+                        <div class="row">
+                        <div class="col-md-6">
+                            <div class="table-container">
+                            <table class="table table-hover" id="tableDivisi">
+                                <thead>
+                                <tr>
+                                    <th>Divisi</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr data-id="1" class="selectable-row">
+                                    <td class="rounded-pill" onclick="selectData(this)">Divisi A</td>
+                                </tr>
+                                <tr data-id="2" class="selectable-row">
+                                    <td class="rounded-pill" onclick="selectData(this)">Divisi B</td>
+                                </tr>
+                                <tr data-id="3" class="selectable-row">
+                                    <td class="rounded-pill" onclick="selectData(this)">Divisi C</td>
+                                </tr>
+                                <tr data-id="4" class="selectable-row">
+                                    <td class="rounded-pill" onclick="selectData(this)">Divisi D</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2>Pilihan Anda</h2>
+                                <div class="table-container">
+                                <table class="table" id="tablePilihan" onclick="removeData(event)">
+                                    <thead>
+                                    <tr>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>      
+                        </div>
+                    </div>
+
+                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+                    <script>
+                        function selectData(cell) {
+                        var selectedTable = document.getElementById('tablePilihan');
+                        var selectedRows = selectedTable.getElementsByTagName('tr');
+
+                        if (selectedRows.length <= 3) {
+                            var selectedRow = cell.parentNode;
+                            selectedRow.classList.add('selected-row');
+
+                            var clonedRow = selectedRow.cloneNode(true);
+                            clonedRow.innerHTML += '<td class="remove-btn rounded-pill" onclick="removeData(this)">X</td>';
+
+                            selectedTable.querySelector('tbody').appendChild(clonedRow);
+
+                            selectedRow.classList.remove('selectable-row');
+                        }
+                        }
+
+                        function removeData(element) {
+                        var selectedRow = element.parentNode;
+                        var selectedTable = document.getElementById('tableDivisi');
+
+                        var originalRow = selectedTable.querySelector('tr[data-id="' + selectedRow.dataset.id + '"]');
+                        originalRow.classList.add('selectable-row');
+
+                        selectedRow.parentNode.removeChild(selectedRow);
+                        }
+                    </script>
+
+                    </body>
+                    </html>
+
+
                         
                         <div class="d-grid d-md-flex gap-2 gap-md-3">
                             <a class="btn btn-lg btn-danger rounded-1" target="_blank" rel="noopener noreferrer" href="verification">
