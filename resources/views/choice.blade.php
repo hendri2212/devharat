@@ -60,15 +60,42 @@
                         <h2 class="title fw-bold haratTitle">lorem ipsum</h2>
                         <p class="text-muted">Kirimkan ide kreatif Anda di bidang Teknologi Digital / Aplikasi untuk kemajuan Kabupaten Kotabaru di bidang Teknologi. </p>
                         
-                        <button type="button" class="btn btn-block btn-outline-dark btn-lg">Dark</button>
-
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Daftar Minat</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                    <th><button type="button" class="btn btn-primary">Notifications <span class="badge text-bg-secondary">4</span></button></th>
+                    <td><button type="button" class="btn btn-primary">Notifications <span class="badge text-bg-secondary">4</span></button></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                    <th><button type="button" class="btn btn-primary">Notifications <span class="badge text-bg-secondary">4</span></button></th>
+                    <td><button type="button" class="btn btn-primary">Notifications <span class="badge text-bg-secondary">4</span></button></td>
+                    </tr>
+                    <tr>
+                    <th><button type="button" class="btn btn-primary">Notifications <span class="badge text-bg-secondary">4</span></button></th>
+                    <td><button type="button" class="btn btn-primary">Notifications <span class="badge text-bg-secondary">4</span></button></td>
+                    </tr>
+                    <tr>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
                         
                         <div class="d-grid d-md-flex gap-2 gap-md-3">
                             <a class="btn btn-lg btn-danger rounded-1" target="_blank" rel="noopener noreferrer" href="verification">
                                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="me-1 mb-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M446.7 98.6l-67.6 318.8c-5.1 22.5-18.4 28.1-37.3 17.5l-103-75.9-49.7 47.8c-5.5 5.5-10.1 10.1-20.7 10.1l7.4-104.9 190.9-172.5c8.3-7.4-1.8-11.5-12.9-4.1L117.8 284 16.2 252.2c-22.1-6.9-22.5-22.1 4.6-32.7L418.2 66.4c18.4-6.9 34.5 4.1 28.5 32.2z"></path>
                                 </svg>
-                                Tuliskan Ide Mu
+                                Kirim
                             </a>
                         </div>
                     </div>
