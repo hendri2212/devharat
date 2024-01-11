@@ -19,6 +19,22 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [Controller::class, 'index']);
 
+// Route::get('/quiz', [Controller::class, 'index']);
+
+//Route::get('/choice', [Controller::class, 'index']);
+
+Route::get('/quiz', function () {
+    return view('quiz');
+});
+
+Route::get('/choice', function () {
+    return view('choice');
+});
+
+Route::get('/verification', function () {
+    return view('verificatiion');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
