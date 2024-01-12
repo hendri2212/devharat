@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Fun; 
 
 class FunSeeder extends Seeder
 {
@@ -29,16 +30,20 @@ class FunSeeder extends Seeder
             'Televisi dan Radio',
             'Kriya',
             'Periklanan',
-            'Seni Perunjukan',
+            'Seni Pertunjukan',
             'Penerbitan',
             'Aplikasi',
         ];
 
-        // Tambahkan 17 data ke dalam tabel 'fun' dengan kolom 'fun_name'
-        foreach ($subsektors as $subsektor) {
-            DB::table('fun')->insert([
-                'fun_name' => $subsektor,
-            ]);
+        // Gunakan hanya Fun::create
+        // foreach ($subsektors as $subsektor) {
+        //     DB::table('fun')->insert([
+        //         'fun_name' => $subsektor,
+        //     ]);
+        // }
+
+       foreach ($subsektors as $subsektor) {
+        Fun::updateOrCreate(['fun_name' => $subsektor]);
         }
     }
 }
