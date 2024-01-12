@@ -57,138 +57,154 @@
             <section class="container p-4">
                 <div class="row center-content-between">
                     <div class="col-lg-6 my-auto">
-                        <h2 class="title fw-bold haratTitle">lorem ipsum</h2>
-                        <p class="text-muted">Kirimkan ide kreatif Anda di bidang Teknologi Digital / Aplikasi untuk kemajuan Kabupaten Kotabaru di bidang Teknologi. </p>
+                        <h2 class="title fw-bold haratTitle">Divisi si-Akrab</h2>
+                        <p class="text-muted">dibawah ini adalah divisi-divisi yang dimiliki oleh si-Akrab. pilihlah tiga divisi yang menurut anda menarik!</p>
                         
                         <!DOCTYPE html>
-                    <html lang="en">
-                    <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-                    <style>
-                        body {
-                        font-family: 'Arial', sans-serif;
-                        }
+                            <html lang="en">
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+                                <style>
+                                    body {
+                                        font-family: 'Arial', sans-serif;
+                                    }
 
-                        h2 {
-                        margin-top: 20px;
-                        }
+                                    h2 {
+                                        margin-top: 20px;
+                                    }
 
-                        .table-container {
-                        max-height: 300px;
-                        overflow-y: auto;
-                        }
+                                    .table-container {
+                                        max-height: 300px;
+                                        overflow-y: auto;
+                                    }
 
-                        .selectable-row:hover {
-                        cursor: pointer;
-                        background-color: #f2f2f2;
-                        }
+                                    .selectable-row:hover {
+                                        cursor: pointer;
+                                        background-color: #f2f2f2;
+                                    }
 
-                        .selected-row {
-                        background-color: #aaffaa !important;
-                        box-shadow: none; /* Menghilangkan efek cahaya */
-                        }
+                                    .selected-row {
+                                        background-color: #aaffaa !important;
+                                        box-shadow: none; /* Menghilangkan efek cahaya */
+                                    }
 
-                        .remove-btn {
-                        cursor: pointer;
-                        color: red;
-                        font-weight: bold;
-                        }
+                                    .remove-btn {
+                                        cursor: pointer;
+                                        color: red;
+                                        font-weight: bold;
+                                    }
 
-                        .remove-btn:hover {
-                        color: darkred;
-                        }
+                                    .remove-btn:hover {
+                                        color: darkred;
+                                    }
 
-                        .rounded-pill {
-                        border-radius: 50px;
-                        }
-                    </style>
-                    </head>
-                    <body>
+                                    .rounded-pill {
+                                        border-radius: 50px;
+                                    }
+                                </style>
+                                <title>Interactive Table</title>
+                            </head>
+                            <body>
 
-                    <div class="container">
-                        <div class="row">
-                        <div class="col-md-6">
-                            <div class="table-container">
-                            <table class="table table-hover" id="tableDivisi">
-                                <thead>
-                                <tr>
-                                    <th>Divisi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr data-id="1" class="selectable-row">
-                                    <td class="rounded-pill" onclick="selectData(this)">Divisi A</td>
-                                </tr>
-                                <tr data-id="2" class="selectable-row">
-                                    <td class="rounded-pill" onclick="selectData(this)">Divisi B</td>
-                                </tr>
-                                <tr data-id="3" class="selectable-row">
-                                    <td class="rounded-pill" onclick="selectData(this)">Divisi C</td>
-                                </tr>
-                                <tr data-id="4" class="selectable-row">
-                                    <td class="rounded-pill" onclick="selectData(this)">Divisi D</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h2>Pilihan Anda</h2>
-                                <div class="table-container">
-                                <table class="table" id="tablePilihan" onclick="removeData(event)">
-                                    <thead>
-                                    <tr>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h2>Divisi</h2>
+                                        <div class="table-container">
+                                            <table class="table table-hover" id="tableDivisi">
+                                                <thead>
+                                                <th>Pilih Divisi yang anda minati maksimal 3</th>
+                                                </thead>
+                                                <tbody>
+                                                <tr data-id="1" class="selectable-row">
+                                                    <td class="rounded-pill" onclick="selectData(this)">Divisi A</td>
+                                                </tr>
+                                                <tr data-id="2" class="selectable-row">
+                                                    <td class="rounded-pill" onclick="selectData(this)">Divisi B</td>
+                                                </tr>
+                                                <tr data-id="3" class="selectable-row">
+                                                    <td class="rounded-pill" onclick="selectData(this)">Divisi C</td>
+                                                </tr>
+                                                <tr data-id="4" class="selectable-row">
+                                                    <td class="rounded-pill" onclick="selectData(this)">Divisi D</td>
+                                                </tr>
+                                                <tr data-id="5" class="selectable-row">
+                                                    <td class="rounded-pill" onclick="selectData(this)">Divisi E</td>
+                                                </tr>
+                                                <tr data-id="6" class="selectable-row">
+                                                    <td class="rounded-pill" onclick="selectData(this)">Divisi F</td>
+                                                </tr>
+                                                <tr data-id="7" class="selectable-row">
+                                                    <td class="rounded-pill" onclick="selectData(this)">Divisi G</td>
+                                                </tr>
+                                                <tr data-id="8" class="selectable-row">
+                                                    <td class="rounded-pill" onclick="selectData(this)">Divisi H</td>
+                                                </tr>
+                                                <!-- Tambahkan lebih banyak data jika diperlukan -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h2>Pilihan Anda</h2>
+                                        <div class="table-container">
+                                            <table class="table" id="tablePilihan" onclick="removeData(event)">
+                                                <thead>
+                                                <tr>
+                                                    <th>Urutkan pilihan anda sesuai prioritas keinginan anda</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>      
-                        </div>
-                    </div>
 
-                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-                    <script>
-                        function selectData(cell) {
-                        var selectedTable = document.getElementById('tablePilihan');
-                        var selectedRows = selectedTable.getElementsByTagName('tr');
+                            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+                            <script>
+                                function selectData(cell) {
+                                    var selectedTable = document.getElementById('tablePilihan');
+                                    var selectedRows = selectedTable.getElementsByTagName('tr');
 
-                        if (selectedRows.length <= 3) {
-                            var selectedRow = cell.parentNode;
-                            selectedRow.classList.add('selected-row');
+                                    // Memeriksa apakah data sudah ada di tabel Pilihan
+                                    var isAlreadySelected = Array.from(selectedRows).some(function (row) {
+                                        return row.dataset.id === cell.parentNode.dataset.id;
+                                    });
 
-                            var clonedRow = selectedRow.cloneNode(true);
-                            clonedRow.innerHTML += '<td class="remove-btn rounded-pill" onclick="removeData(this)">X</td>';
+                                    if (selectedRows.length <= 3 && !isAlreadySelected) {
+                                        var selectedRow = cell.parentNode;
+                                        selectedRow.classList.add('selected-row');
 
-                            selectedTable.querySelector('tbody').appendChild(clonedRow);
+                                        var clonedRow = selectedRow.cloneNode(true);
+                                        clonedRow.innerHTML += '<td class="remove-btn rounded-pill" onclick="removeData(this)">X</td>';
 
-                            selectedRow.classList.remove('selectable-row');
-                        }
-                        }
+                                        selectedTable.querySelector('tbody').appendChild(clonedRow);
 
-                        function removeData(element) {
-                        var selectedRow = element.parentNode;
-                        var selectedTable = document.getElementById('tableDivisi');
+                                        selectedRow.classList.remove('selectable-row');
+                                    }
+                                }
 
-                        var originalRow = selectedTable.querySelector('tr[data-id="' + selectedRow.dataset.id + '"]');
-                        originalRow.classList.add('selectable-row');
+                                function removeData(element) {
+                                    var selectedRow = element.parentNode;
+                                    var selectedTable = document.getElementById('tableDivisi');
 
-                        selectedRow.parentNode.removeChild(selectedRow);
-                        }
-                    </script>
+                                    var originalRow = selectedTable.querySelector('tr[data-id="' + selectedRow.dataset.id + '"]');
+                                    originalRow.classList.add('selectable-row');
 
-                    </body>
-                    </html>
+                                    selectedRow.parentNode.removeChild(selectedRow);
+                                }
+                            </script>
 
-
-                        
+                            </body>
+                        </html>
+                                   
                         <div class="d-grid d-md-flex gap-2 gap-md-3">
                             <a class="btn btn-lg btn-danger rounded-1" target="_blank" rel="noopener noreferrer" href="verification">
                                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="me-1 mb-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
