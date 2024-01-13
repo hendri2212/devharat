@@ -21,6 +21,9 @@ class CreateChoicesTable extends Migration
 
             $table->foreign('interest_id')->references('id')->on('interest')->onDelete('restrict');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
+
+            // Add unique constraint for interest_id and user_id
+            $table->unique(['interest_id', 'user_id']);
         });
     }
 
