@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommunityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,18 @@ use App\Http\Controllers\UserController;
 |
 */
 
+
+
+// ...
+
+Route::get('/choice', [CommunityController::class, 'showSubsektors']);
+
+//route di bawah untuk menginput / submit Fun
+Route::post('/process-selection', [CommunityController::class, 'processUserSelection']);
+
+
+
+
 Route::get('/', [Controller::class, 'index']);
 
 // Route::get('/quiz', [Controller::class, 'index']);
@@ -27,12 +40,12 @@ Route::get('/quiz', function () {
     return view('quiz');
 });
 
-Route::get('/choice', function () {
-    return view('choice');
-});
+// Route::get('/choice', function () {
+//     return view('choice');
+// });
 
 Route::get('/verification', function () {
-    return view('verificatiion');
+    return view('verification');
 });
 
 Route::get('/dashboard', function () {

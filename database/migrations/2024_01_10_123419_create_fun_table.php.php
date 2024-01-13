@@ -5,7 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInterestTable extends Migration
+class CreateFunTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class CreateInterestTable extends Migration
      */
     public function up()
     {
-        Schema::create('interest', function (Blueprint $table) {
+        Schema::create('fun', function (Blueprint $table) {
             $table->id();
-            $table->text('interest_name');
+            $table->text('fun_name');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateInterestTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('interest');
+        Schema::dropIfExists('fun');
     }
 }
