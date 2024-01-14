@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Fun; 
+use App\Models\Community;
 
-class FunSeeder extends Seeder
+class CommunitySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,8 @@ class FunSeeder extends Seeder
     public function run()
     {
         $subsektors = [
-            'Pengembang Permainan',
+            'Aplikasi (Programmer)',
+            'Pengembang Permainan (Game)',
             'Arsitektur',
             'Desain Interior',
             'Musik',
@@ -32,18 +33,17 @@ class FunSeeder extends Seeder
             'Periklanan',
             'Seni Pertunjukan',
             'Penerbitan',
-            'Aplikasi',
         ];
 
-        // Gunakan hanya Fun::create
+        // Gunakan hanya Community::create
         // foreach ($subsektors as $subsektor) {
-        //     DB::table('fun')->insert([
-        //         'fun_name' => $subsektor,
+        //     DB::table('communities')->insert([
+        //         'community' => $subsektor,
         //     ]);
         // }
 
-       foreach ($subsektors as $subsektor) {
-        Fun::updateOrCreate(['fun_name' => $subsektor]);
+        foreach ($subsektors as $subsektor) {
+            Community::updateOrCreate(['community' => $subsektor]);
         }
     }
 }

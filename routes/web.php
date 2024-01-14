@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\QuizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,34 +19,7 @@ use App\Http\Controllers\CommunityController;
 */
 
 
-
-// ...
-
-Route::get('/choice', [CommunityController::class, 'showSubsektors']);
-
-//route di bawah untuk menginput / submit Fun
-Route::post('/process-selection', [CommunityController::class, 'processUserSelection']);
-
-
-
-
 Route::get('/', [Controller::class, 'index']);
-
-// Route::get('/quiz', [Controller::class, 'index']);
-
-//Route::get('/choice', [Controller::class, 'index']);
-
-Route::get('/quiz', function () {
-    return view('quiz');
-});
-
-// Route::get('/choice', function () {
-//     return view('choice');
-// });
-
-Route::get('/verification', function () {
-    return view('verification');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -56,9 +29,13 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('member', MemberController::class);
     Route::resource('idea', IdeaController::class);
     Route::resource('user', UserController::class);
+    Route::resource('/quiz', QuizController::class);
 
     // sementara
     Route::get('/ideal', [IdeaController::class, 'ideal']);
 });
+
+//route di bawah untuk menginput / submit Fun
+Route::post('/process-selection', [CommunityController::class, 'processUserSelection']);
 
 require __DIR__.'/auth.php';

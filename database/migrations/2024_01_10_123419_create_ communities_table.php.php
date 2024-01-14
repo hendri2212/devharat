@@ -5,7 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFunTable extends Migration
+class CreateCommunitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class CreateFunTable extends Migration
      */
     public function up()
     {
-        Schema::create('fun', function (Blueprint $table) {
+        Schema::create('communities', function (Blueprint $table) {
             $table->id();
-            $table->text('fun_name');
+            $table->text('community');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateFunTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fun');
+        Schema::dropIfExists('communities');
     }
 }

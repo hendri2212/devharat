@@ -15,15 +15,15 @@ class CreateChoicesTable extends Migration
     {
         Schema::create('choices', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('fun_id');
+            $table->unsignedBigInteger('community_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('fun_id')->references('id')->on('fun')->onDelete('restrict');
+            $table->foreign('community_id')->references('id')->on('communities')->onDelete('restrict');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
 
-            // Add unique constraint for interest_id and user_id
-            $table->unique(['interest_id', 'user_id']);
+            // Add unique constraint for community_id and user_id
+            $table->unique(['community_id', 'user_id']);
         });
     }
 
