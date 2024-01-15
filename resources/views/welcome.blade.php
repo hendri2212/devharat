@@ -83,7 +83,7 @@
                     <div class="col-lg-6 my-auto">
                         <h1 class="title fw-bold haratTitle">Bangun Masa Depan bersama Developer <span class="text-success">Harat Kotabaru</span></h1>
                         <p class="text-muted">Kirimkan ide kreatif Anda di bidang Teknologi Digital / Aplikasi untuk kemajuan Kabupaten Kotabaru di bidang Teknologi. </p>
-                        <p class="fw-bolder">Batas Pendaftaran: <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="my-auto ms-2 me-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256,8C119,8,8,119,8,256S119,504,256,504,504,393,504,256,393,8,256,8Zm92.49,313h0l-20,25a16,16,0,0,1-22.49,2.5h0l-67-49.72a40,40,0,0,1-15-31.23V112a16,16,0,0,1,16-16h32a16,16,0,0,1,16,16V256l58,42.5A16,16,0,0,1,348.49,321Z"></path></svg>08 Nov 2023 s/d 14 Nov 2023</p>
+                        {{-- <p class="fw-bolder">Batas Pendaftaran: <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="my-auto ms-2 me-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256,8C119,8,8,119,8,256S119,504,256,504,504,393,504,256,393,8,256,8Zm92.49,313h0l-20,25a16,16,0,0,1-22.49,2.5h0l-67-49.72a40,40,0,0,1-15-31.23V112a16,16,0,0,1,16-16h32a16,16,0,0,1,16,16V256l58,42.5A16,16,0,0,1,348.49,321Z"></path></svg>08 Nov 2023 s/d 14 Nov 2023</p> --}}
                         <div class="d-grid d-md-flex gap-2 gap-md-3">
                             <a class="btn btn-lg btn-danger rounded-1" target="_blank" rel="noopener noreferrer" href="/idea/create">
                                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="me-1 mb-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +106,7 @@
                     </div>
                     <div class="col-lg-9 bg-primary rounded-5">
                         <div class="row py-5 text-white align-items-center">
-                            <div class="col-lg-4 text-center">
+                            {{-- <div class="col-lg-4 text-center">
                                 <?php
                                     $now = time(); // or your date as well
                                     $your_date = strtotime('2023-11-14 24:00:00');
@@ -115,12 +115,14 @@
                                 ?>
                                 <h1 class="display-3 fw-bold"><span><?= $days_remaining ?></span></h1>
                                 <span>Hari Lagi</span>
-                            </div>
+                            </div> --}}
                             <div class="col-lg-8 px-5 py-3 border-start border-4 d-none d-lg-block">
-                                <p class="m-0 lh-lg">Dapatkan Uang Apresiasi dari DevHarat Kotabaru dengan Total Rp2.600.000,-</p>
+                                {{-- <p class="m-0 lh-lg">Dapatkan Uang Apresiasi dari DevHarat Kotabaru dengan Total Rp2.600.000,-</p> --}}
+                                <p class="m-0 lh-lg">Tingkatkan ekonomi kabupaten kotabaru dengan Teknologi Digital</p>
                             </div>
                             <div class="col-lg-8 px-5 py-3 d-block d-lg-none">
-                                <p class="m-0 lh-lg">Dapatkan Uang Apresiasi dari DevHarat Kotabaru dengan Total Rp2.600.000,-</p>
+                                <p class="m-0 lh-lg">Tingkatkan ekonomi kabupaten kotabaru dengan Teknologi Digital</p>
+                                {{-- <p class="m-0 lh-lg">Dapatkan Uang Apresiasi dari DevHarat Kotabaru dengan Total Rp2.600.000,-</p> --}}
                             </div>
                         </div>
                     </div>
