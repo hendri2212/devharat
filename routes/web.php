@@ -29,13 +29,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('member', MemberController::class);
     Route::resource('idea', IdeaController::class);
     Route::resource('user', UserController::class);
-    Route::resource('/quiz', QuizController::class);
+    Route::get('/quiz/school', [QuizController::class, 'school']);
+    Route::resource('quiz', QuizController::class);
 
     // sementara
     Route::get('/ideal', [IdeaController::class, 'ideal']);
 });
-
-//route di bawah untuk menginput / submit Fun
-Route::post('/process-selection', [CommunityController::class, 'processUserSelection']);
 
 require __DIR__.'/auth.php';
