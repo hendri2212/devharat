@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quiz;
 use App\Models\Community;
+use App\Models\School;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -15,18 +16,27 @@ class QuizController extends Controller
         return view('layouts/quiz/quiz');
     }
 
+    public function school()
+    {
+        $school = School::all();
+        return view('layouts/quiz/school', ['school' => $school]);
+    }
+
     public function create()
     {
         $communities = Community::all();
-        $choice = Quiz::where('user_id', Auth::user()->id)->get();
+        $choice = Quiz::with('community')->where('user_id', Auth::user()->id)->get();
         return view('layouts/quiz/choice', compact('communities', 'choice'));
+        // return $choice;
     }
 
     public function store(Request $request)
     {
         $save = new Quiz;
-        $save->community_id = $request->community_id;
         $save->user_id = Auth::user()->id;
+        $save->community_id = $request->community_id;
+        $save->school_id = $request->school_id;
+        $save->class = $request->class;
         $save->save();
         
         return response()->json('Success', 200);
