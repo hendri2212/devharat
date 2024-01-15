@@ -9,6 +9,7 @@
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
@@ -78,6 +79,16 @@
                                 </tr>
                             @endforeach
                         </table>
+                        <div class="col-lg-6 my-auto">
+                            <div class="d-grid d-md-flex gap-2 gap-md-3">
+                                <button type="button" onclick="finish()" class="btn btn-lg btn-danger rounded-1">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="me-1 mb-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M446.7 98.6l-67.6 318.8c-5.1 22.5-18.4 28.1-37.3 17.5l-103-75.9-49.7 47.8c-5.5 5.5-10.1 10.1-20.7 10.1l7.4-104.9 190.9-172.5c8.3-7.4-1.8-11.5-12.9-4.1L117.8 284 16.2 252.2c-22.1-6.9-22.5-22.1 4.6-32.7L418.2 66.4c18.4-6.9 34.5 4.1 28.5 32.2z"></path>
+                                    </svg>
+                                    Selesai
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -161,6 +172,18 @@
                 originalRow.classList.add('selectable-row');
 
                 selectedRow.parentNode.removeChild(selectedRow);
+            }
+
+            function finish() {
+                Swal.fire({
+                    title: 'Terimakasih!',
+                    text: 'Gerakan Ekonomi Kreatif Kotabaru',
+                    icon: 'success',
+                    confirmButtonText: 'Oke'
+                }).then((result) => {
+                    localStorage.clear()
+                    window.location.href = "/"
+                })
             }
         </script>
     </body>
