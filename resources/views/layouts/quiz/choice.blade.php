@@ -54,7 +54,7 @@
         </nav>
         <main id="main">
             <section class="container p-4">
-                <div class="row center-content-between">
+                <div class="row justify-content-between">
                     <div class="col-lg-6 my-auto">
                         <p class="text-muted">Untuk memilih silahkan adik - adik klik subsektor yang paling diminati yaa...</p>
                         <p class="fw-bolder mb-0">17 Subsektor Ekonomi Kreatif</p>
@@ -62,7 +62,8 @@
                             <table class="table table-hover table-bordered" id="tableDivisi">
                                 @foreach ($communities as $key => $data)
                                     <tr data-id="{{ $data->id }}" class="selectable-row">
-                                        <td onclick="selectData(this)">{{ $data->community }}</td>
+                                        <td>{{ $data->community }}</td>
+                                        <td onclick="selectData(this)"><span class="badge text-bg-success">Pilih</span></td>
                                     </tr>
                                 @endforeach
                             </table>
@@ -72,7 +73,7 @@
                             <tr></tr>
                             @foreach ($choice as $item)
                                 <tr data-id="{{ $item->community_id }}" class="selectable-row selected-row">
-                                    <td onclick="selectData(this)">{{ $item->community_id }}</td>
+                                    <td onclick="selectData(this)">{{ $item->community->community }}</td>
                                     <td onclick="removeData(this)"><span class="badge text-bg-danger">Delete</span></td>
                                 </tr>
                             @endforeach
@@ -122,11 +123,11 @@
 
             // Select choice
             function selectData(cell) {
-                var selectedTable = document.getElementById('tablePilihan');
-                var selectedRows = selectedTable.getElementsByTagName('tr');
+                const selectedTable = document.getElementById('tablePilihan');
+                const selectedRows = selectedTable.getElementsByTagName('tr');
 
-                const element = document.querySelector('.selectable-row');
-                const id = element.dataset.id; // id will be "1"
+                const row = cell.closest('tr');
+                const id = row.dataset.id;
 
                 // Memeriksa apakah data sudah ada di tabel Pilihan
                 var isAlreadySelected = Array.from(selectedRows).some(function (row) {
@@ -136,6 +137,8 @@
                 if (selectedRows.length <= 3 && !isAlreadySelected) {
                     axios.post('/quiz', {
                         community_id: id,
+                        school_id: localStorage.getItem("school_id"),
+                        class: localStorage.getItem("class")
                     })
 
                     var selectedRow = cell.parentNode;
