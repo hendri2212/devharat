@@ -20,7 +20,6 @@ class QuizController extends Controller
         $communities = Community::all();
         $choice = Quiz::where('user_id', Auth::user()->id)->get();
         return view('layouts/quiz/choice', compact('communities', 'choice'));
-        // return $choice;
     }
 
     public function store(Request $request)

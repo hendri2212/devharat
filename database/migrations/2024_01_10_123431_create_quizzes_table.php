@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChoicesTable extends Migration
+class CreateQuizzesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateChoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('choices', function (Blueprint $table) {
+        Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('community_id');
             $table->unsignedBigInteger('user_id');
@@ -34,6 +34,6 @@ class CreateChoicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('choices');
+        Schema::dropIfExists('quizzes');
     }
 }
