@@ -36,4 +36,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/ideal', [IdeaController::class, 'ideal']);
 });
 
+Route::get('/grafik', function () {
+    return view('/layouts/idea/grafik');
+});
+
 require __DIR__.'/auth.php';
