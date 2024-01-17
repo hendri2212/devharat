@@ -131,8 +131,7 @@
                     header.classList.remove("bg-white", "shadow");
                 }
             };
-
-            // Select choice
+            
             function selectData(cell) {
                 const selectedTable = document.getElementById('tablePilihan');
                 const selectedRows = selectedTable.getElementsByTagName('tr');
@@ -145,7 +144,7 @@
                     return row.dataset.id === cell.parentNode.dataset.id;
                 });
 
-                if (selectedRows.length <= 3 && !isAlreadySelected) {
+                     if (selectedRows.length <= 3 && !isAlreadySelected) {
                     axios.post('/quiz', {
                         community_id: id,
                         school_id: localStorage.getItem("school_id"),
@@ -156,7 +155,7 @@
                     selectedRow.classList.add('selected-row');
 
                     var clonedRow = selectedRow.cloneNode(true);
-                    clonedRow.innerHTML += '<td onclick="removeData(this)"><span class="badge text-bg-danger">Delete</span></td>';
+                        clonedRow.innerHTML = '<td>' + clonedRow.cells[0].innerHTML + '</td><td onclick="removeData(this)"><span class="badge text-bg-danger">Delete</span></td>';
 
                     selectedTable.querySelector('tbody').appendChild(clonedRow);
 
