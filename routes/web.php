@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('quiz', QuizController::class);
     Route::get('grafik', [ChartController::class, 'pieChart']);
 
-    // sementara
+    // sementara u
     Route::get('/ideal', [IdeaController::class, 'ideal']);
 });
 

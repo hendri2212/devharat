@@ -23,7 +23,7 @@ class ChartController extends Controller
             $dataPoints[] = $val->quiz_count;
         }
 
-        // Konversi array ke dalam format yang diinginkan
+        
         $labelsString = "['" . implode("', '", $labels) . "']";
         $dataPointsString = "[" . implode(", ", $dataPoints) . "]";
 
