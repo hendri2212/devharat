@@ -13,7 +13,7 @@ class QuizController extends Controller
 {
     public function index()
     {
-        return view('layouts/quiz/quiz');
+        return view('layouts/quiz/home');
     }
 
     public function school()
@@ -50,18 +50,10 @@ class QuizController extends Controller
         return response()->json('Success', 200);
     }
 
-    /**
-     * Menampilkan 17 subsektor dari database.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function showSubsektors()
-    {
-        $subsektors = DB::table('fun')->pluck('fun_name');
-
-        return view('layouts/quiz/choice', compact('subsektors'));
-        // return view('SubsektorSementara.index', compact('subsektors'));
-    }
+    // public function register()
+    // {
+    //     return view('layouts/quiz/register');
+    // }
 
     /**
      * Menanggapi hasil pilihan pengguna.

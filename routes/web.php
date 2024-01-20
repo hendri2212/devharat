@@ -24,14 +24,16 @@ Route::get('/', [Controller::class, 'index']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+Route::get('/quiz', [QuizController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('member', MemberController::class);
     Route::resource('idea', IdeaController::class);
     Route::resource('user', UserController::class);
     Route::get('/quiz/school', [QuizController::class, 'school']);
-    Route::resource('quiz', QuizController::class);
-
+    // Route::get('/quiz/register', [QuizController::class, 'register']);
+    Route::resource('quiz', QuizController::class)->except(['index']);
+    
     // sementara
     Route::get('/ideal', [IdeaController::class, 'ideal']);
 });
