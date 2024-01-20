@@ -27,7 +27,10 @@ class QuizController extends Controller
         $communities = Community::all();
         $choice = Quiz::with('community')->where('user_id', Auth::user()->id)->get();
         return view('layouts/quiz/choice', compact('communities', 'choice'));
-        // return $choice;
+        
+        // $data = "Hendri";
+        // return view('layouts/quiz/choice', compact('data'));
+        // return view('layouts/quiz/choice', ['data' => 'Hazna']);
     }
 
     public function store(Request $request)
@@ -39,6 +42,11 @@ class QuizController extends Controller
         $save->class = $request->class;
         $save->save();
         
+        return response()->json('Success', 200);
+    }
+
+    function destroy($id){
+        Quiz::destroy($id);
         return response()->json('Success', 200);
     }
 

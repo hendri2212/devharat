@@ -70,11 +70,11 @@
                             </table>
                         </div>
                         <p class="fw-bolder mb-0">Subsektor pilihan Anda</p>
-                        <table class="table table-bordered" id="tablePilihan" onclick="removeData(event)">
+                        <table class="table table-bordered" id="tablePilihan">
                             <tr></tr>
                             @foreach ($choice as $item)
-                                <tr data-id="{{ $item->community_id }}" class="selectable-row selected-row">
-                                    <td onclick="selectData(this)">{{ $item->community->community }}</td>
+                                <tr data-id="{{ $item->id }}" class="selectable-row selected-row">
+                                    <td>{{ $item->community->community }}</td>
                                     <td onclick="removeData(this)"><span class="badge text-bg-danger">Delete</span></td>
                                 </tr>
                             @endforeach
@@ -113,17 +113,9 @@
                     document.getElementById('progBelakang').classList.remove('rounded-bottom-5');
                 }
             });
-
-            // When the user scrolls the page, execute myFunction
             window.onscroll = function() {myFunction()};
-
-            // Get the header
             var header = document.getElementById("fixTop");
-
-            // Get the offset position of the navbar
             var sticky = header.offsetTop;
-
-            // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
             function myFunction() {
                 if (window.pageYOffset > sticky) {
                     header.classList.add("bg-white", "shadow");
@@ -131,7 +123,8 @@
                     header.classList.remove("bg-white", "shadow");
                 }
             };
-            
+
+            // Copy Data
             function selectData(cell) {
                 const selectedTable = document.getElementById('tablePilihan');
                 const selectedRows = selectedTable.getElementsByTagName('tr');
@@ -144,33 +137,30 @@
                     return row.dataset.id === cell.parentNode.dataset.id;
                 });
 
-                     if (selectedRows.length <= 3 && !isAlreadySelected) {
+                if (selectedRows.length <= 3 && !isAlreadySelected) {
                     axios.post('/quiz', {
                         community_id: id,
                         school_id: localStorage.getItem("school_id"),
                         class: localStorage.getItem("class")
                     })
 
-                    var selectedRow = cell.parentNode;
-                    selectedRow.classList.add('selected-row');
+                    // var selectedRow = cell.parentNode;
+                    // var clonedRow = selectedRow.cloneNode(true);
+                    // clonedRow.innerHTML += '<td onclick="removeData(this)"><span class="badge text-bg-danger">Delete</span></td>';
+                    // clonedRow.innerHTML = '<td>' + clonedRow.cells[0].innerHTML + '</td><td onclick="removeData(this)"><span class="badge text-bg-danger">Delete</span></td>';
+                    // selectedTable.querySelector('tbody').appendChild(clonedRow);
 
-                    var clonedRow = selectedRow.cloneNode(true);
-                        clonedRow.innerHTML = '<td>' + clonedRow.cells[0].innerHTML + '</td><td onclick="removeData(this)"><span class="badge text-bg-danger">Delete</span></td>';
-
-                    selectedTable.querySelector('tbody').appendChild(clonedRow);
-
-                    selectedRow.classList.remove('selectable-row');
+                    location.reload();
                 }
             }
 
             function removeData(element) {
-                var selectedRow = element.parentNode;
                 var selectedTable = document.getElementById('tableDivisi');
-
-                var originalRow = selectedTable.querySelector('tr[data-id="' + selectedRow.dataset.id + '"]');
-                originalRow.classList.add('selectable-row');
+                var selectedRow = element.parentNode
 
                 selectedRow.parentNode.removeChild(selectedRow);
+                let idDel = selectedRow.dataset.id
+                axios.delete('/quiz/'+idDel)
             }
 
             function finish() {
