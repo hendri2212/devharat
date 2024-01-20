@@ -6,6 +6,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\ChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class);
     Route::get('/quiz/school', [QuizController::class, 'school']);
     Route::resource('quiz', QuizController::class);
+    Route::get('grafik', [ChartController::class, 'pieChart']);
 
     // sementara
     Route::get('/ideal', [IdeaController::class, 'ideal']);
 });
+
+
 
 require __DIR__.'/auth.php';
