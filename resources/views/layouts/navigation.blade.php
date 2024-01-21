@@ -16,14 +16,16 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    {{-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"> --}}
                     <x-nav-link href="/idea">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link href="/user/{{ Auth::user()->id }}">
                         {{ __('Data User') }}
                     </x-nav-link>
-                    @if (Auth::user()->id==1)
+                    <x-nav-link href="/grafik">
+                        {{ __('Grafik Bidang') }}
+                    </x-nav-link>
+                    @if (Auth::user()->id == 1)
                         <x-nav-link href="/member">
                             {{ __('Data Member') }}
                         </x-nav-link>
@@ -34,7 +36,7 @@
                 </div>
             </div>
 
-            <!-- Settings Dropdown -->
+            <!-- Settings Dropdown, -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
