@@ -16,12 +16,6 @@ class QuizController extends Controller
         return view('layouts/quiz/home');
     }
 
-    public function school()
-    {
-        $school = School::all();
-        return view('layouts/quiz/school', ['school' => $school]);
-    }
-
     public function create()
     {
         $communities = Community::all();
@@ -45,6 +39,12 @@ class QuizController extends Controller
     function destroy($id){
         Quiz::destroy($id);
         return response()->json('Success', 200);
+    }
+
+    public function school()
+    {
+        $school = School::all();
+        return view('layouts/quiz/school', ['school' => $school]);
     }
 
     // public function register()
