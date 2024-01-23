@@ -12,6 +12,15 @@
                 <div class="col-md-6">
                     <div class="max-w-md mx-auto bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-4">
+                            <div class="mb-3">
+                                <label for="school" class="form-label">Sekolah</label>
+                                <select name="school_id" id="school" class="form-control">
+                                    
+                                        <option value=""></option>
+                                    
+                                </select>
+                            </div>
+                            
                             <div>
                                 <canvas id="myChart" style="max-width: 100%;"></canvas>
                             </div>
@@ -20,6 +29,8 @@
                             <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+                            
 
                             <script>
                                 const ctx = document.getElementById('myChart');
