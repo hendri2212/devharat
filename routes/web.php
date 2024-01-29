@@ -7,6 +7,7 @@ use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\SchoolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +33,14 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('idea', IdeaController::class);
     Route::resource('user', UserController::class);
     Route::get('/quiz/school', [QuizController::class, 'school']);
+    Route::get('sekolah', [SchoolController::class, 'school']);
     // Route::get('/quiz/register', [QuizController::class, 'register']);
     Route::resource('quiz', QuizController::class)->except(['index']);
     Route::get('grafik', [ChartController::class, 'pieChart']);
     
     // sementara
     Route::get('/ideal', [IdeaController::class, 'ideal']);
+    Route::resource('school', SchoolController::class);
 });
 
 

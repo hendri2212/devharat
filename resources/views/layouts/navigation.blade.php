@@ -32,6 +32,9 @@
                         <x-nav-link href="/ideal">
                             {{ __('Data Idea') }}
                         </x-nav-link>
+                        <x-nav-link href="/sekolah">
+                        {{ __('Data Sekolah') }}
+                    </x-nav-link>
                     @endif
                 </div>
             </div>
