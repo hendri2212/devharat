@@ -22,7 +22,7 @@
                     <x-nav-link href="/user/{{ Auth::user()->id }}">
                         {{ __('Data User') }}
                     </x-nav-link>
-                    <x-nav-link href="/grafik">
+                    <x-nav-link href="/chart">
                         {{ __('Grafik Bidang') }}
                     </x-nav-link>
                     @if (Auth::user()->id == 1)
@@ -32,7 +32,7 @@
                         <x-nav-link href="/ideal">
                             {{ __('Data Idea') }}
                         </x-nav-link>
-                        <x-nav-link href="/sekolah">
+                        <x-nav-link href="/school">
                         {{ __('Data Sekolah') }}
                     </x-nav-link>
                     @endif
