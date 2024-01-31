@@ -33,16 +33,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('idea', IdeaController::class);
     Route::resource('user', UserController::class);
     Route::get('/quiz/school', [QuizController::class, 'school']);
-    // Route::get('sekolah', [SchoolController::class, 'school']);
-    // Route::get('/quiz/register', [QuizController::class, 'register']);
     Route::resource('quiz', QuizController::class)->except(['index']);
-    Route::get('grafik', [ChartController::class, 'pieChart']);
+    Route::resource('chart', ChartController::class);
     
     // sementara
     Route::resource('school', SchoolController::class);
     Route::get('/ideal', [IdeaController::class, 'ideal']);
 });
-
-
 
 require __DIR__.'/auth.php';
