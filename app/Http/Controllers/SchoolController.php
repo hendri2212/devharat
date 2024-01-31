@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 
 class SchoolController extends Controller
 {
-    public function school()
+    public function index()
     {
         $school = School::all();
         return view('layouts/idea/sekolah', ['school' => $school]);
     }
+    
     public function store(Request $request)
     {
         $request->validate([
