@@ -15,10 +15,11 @@
                             <div class="mb-3">
                                 <label for="school" class="form-label">Sekolah</label>
                                 <select name="school_id" id="school" class="form-control">
-                            @foreach ($school as $item)
-                                <option value="{{ $item->id }}">{{ $item->school }}</option>
-                            @endforeach
-                        </select>
+                                    @foreach ($school as $item)
+                                        <option value="{{ $item->id }}" 
+                                        {{ request('school_id') == $item->id ? 'selected' : '' }}>{{ $item->school }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div>
@@ -32,7 +33,6 @@
 
                             <script>
                                 const ctx = document.getElementById('myChart');
-
                                 new Chart(ctx, {
                                     type: 'pie',
                                     data: {
@@ -53,13 +53,19 @@
                                         }
                                     }
                                 });
+
+                            $(document).ready(function() {
+                               $('#school').change(function() {var schoolId = $(this).val();
+                               window.location.href = '?school_id=' + schoolId; 
+                           });
+                         });
                             </script>
                         </div>
                     </div>
                 </div>
 
-                <!-- Table Column -->
-                <div class="col-md-6">
+                         <!-- Table Column -->
+                         <div class="col-md-6">
                     <div class="max-w-md mx-auto bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-4">
                             <h2>Bordered Table</h2>

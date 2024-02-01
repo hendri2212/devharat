@@ -8,23 +8,37 @@ use DB;
 
 class ChartController extends Controller
 {
-    public function index() 
+    public function chart(Request $request) 
     {
-        $result = DB::SELECT(DB::RAW("SELECT c.community, q.quiz_count
-            FROM communities c
-            JOIN (
-                SELECT q.community_id, COUNT(*) AS quiz_count
+        $schoolId = $request->query('school_id', 0);
+
+        if ($schoolId == 0) {
+            $result = DB::select(DB::raw("
+                SELECT c.community, COUNT(*) AS quiz_count
                 FROM quizzes q
-                WHERE q.id = (
-                    SELECT MIN(id)
+                JOIN communities c ON q.community_id = c.id
+                WHERE q.id IN (
+                    SELECT MIN(q2.id)
+                    FROM quizzes q2
+                    GROUP BY q2.user_id
+                )
+                GROUP BY c.id, c.community
+            "));
+        } else {
+            $result = DB::select(DB::raw("
+                SELECT c.community, COUNT(*) AS quiz_count
+                FROM quizzes q
+                JOIN communities c ON q.community_id = c.id
+                WHERE q.school_id = :schoolId AND q.id IN (
+                    SELECT MIN(q2.id)
                     FROM quizzes q2
                     WHERE q2.user_id = q.user_id
+                    GROUP BY q2.user_id
                 )
-                AND q.school_id = 1
-                GROUP BY q.community_id
-            ) q ON c.id = q.community_id
-        "));
-        
+                GROUP BY c.id, c.community
+            "), ['schoolId' => $schoolId]);
+        }
+
         $labels = [];
         $dataPoints = [];
 

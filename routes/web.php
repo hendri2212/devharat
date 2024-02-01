@@ -20,12 +20,12 @@ use App\Http\Controllers\SchoolController;
 |
 */
 
-
 Route::get('/', [Controller::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 Route::get('/quiz', [QuizController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
@@ -34,9 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class);
     Route::get('/quiz/school', [QuizController::class, 'school']);
     Route::resource('quiz', QuizController::class)->except(['index']);
-    Route::resource('chart', ChartController::class);
+    Route::get('/chart', [ChartController::class, 'chart'])->name('chart.chart');
     
-    // sementara
     Route::resource('school', SchoolController::class);
     Route::get('/ideal', [IdeaController::class, 'ideal']);
 });
