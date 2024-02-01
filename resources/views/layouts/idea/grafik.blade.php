@@ -15,8 +15,10 @@
                             <div class="mb-3">
                                 <label for="school" class="form-label">Sekolah</label>
                                 <select name="school_id" id="school" class="form-control">
-                                    <option value=""></option>
-                                </select>
+                            @foreach ($school as $item)
+                                <option value="{{ $item->id }}">{{ $item->school }}</option>
+                            @endforeach
+                        </select>
                             </div>
 
                             <div>
