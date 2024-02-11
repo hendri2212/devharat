@@ -17,6 +17,8 @@ class News extends Model
         'user_id',
     ];
 
+    protected $appends = ['image_url'];
+
     public function getImageUrlAttribute()
     {
         return asset('storage/' . $this->image);

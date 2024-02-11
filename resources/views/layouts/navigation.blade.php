@@ -34,7 +34,10 @@
                         </x-nav-link>
                         <x-nav-link href="/school">
                         {{ __('Data Sekolah') }}
-                    </x-nav-link>
+                        </x-nav-link>
+                        <x-nav-link href="{{ route('admin.news.index') }}">
+                            Master Berita
+                        </x-nav-link>
                     @endif
                 </div>
             </div>

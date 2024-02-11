@@ -42,7 +42,9 @@ Route::middleware(['auth'])->group(function () {
     
     Route::resource('school', SchoolController::class);
     Route::get('/ideal', [IdeaController::class, 'ideal']);
+});
 
+Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('news', BackendNews::class);
 });
 

@@ -14,7 +14,7 @@ class NewsFactory extends Factory
      */
     public function definition()
     {
-        $title = $this->faker->word(10);
+        $title = $this->faker->sentence(10);
         return [
             'title' => $title,
             'slug' => Str::slug($title),
