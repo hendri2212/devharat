@@ -15,6 +15,8 @@
         <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+
+        @stack('css')
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -22,7 +24,7 @@
 
             <!-- Page Heading -->
             <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
             </header>
@@ -32,5 +34,9 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        @stack('js')
     </body>
 </html>

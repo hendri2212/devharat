@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\Backend\NewsController as BackendNews;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,9 @@ Route::get('/dashboard', function () {
 
 Route::get('/quiz', [QuizController::class, 'index']);
 
+Route::get('news', [FrontendNews::class, 'list']);
+Route::get('news/{slug}', [FrontendNews::class, 'show']);
+
 Route::middleware(['auth'])->group(function () {
     Route::resource('member', MemberController::class);
     Route::resource('idea', IdeaController::class);
@@ -38,6 +42,10 @@ Route::middleware(['auth'])->group(function () {
     
     Route::resource('school', SchoolController::class);
     Route::get('/ideal', [IdeaController::class, 'ideal']);
+});
+
+Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::resource('news', BackendNews::class);
 });
 
 require __DIR__.'/auth.php';
