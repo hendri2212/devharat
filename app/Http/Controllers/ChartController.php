@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\School;
+use App\Models\Quiz;
 use Illuminate\Http\Request;
 use DB;
 
@@ -39,15 +40,18 @@ class ChartController extends Controller
         //     "), ['schoolId' => $schoolId]);
         // }
 
+        $chartOne = Quiz::chartOne();
+        $chartTwo = Quiz::chartTwo();
+        $chartThree = Quiz::chartThree();
        
-        // $labels = [];
-        // $dataPoints = [];
+        $labels = [];
+        $dataPoints = [];
         // foreach ($result as $val) {
         //     $labels[] = $val->community;
         //     $dataPoints[] = $val->quiz_count;
         // }
-        // $labelsString = "['" . implode("', '", $labels) . "']";
-        // $dataPointsString = "[" . implode(", ", $dataPoints) . "]";
+        $labelsString = "['" . implode("', '", $labels) . "']";
+        $dataPointsString = "[" . implode(", ", $dataPoints) . "]";
 
         // Query tambahan untuk menampilkan nama komunitas dan jumlah pilihan yang dipilih user.
         
@@ -58,15 +62,20 @@ class ChartController extends Controller
         // ->orderBy('jumlah_pilihan', 'desc') 
         // ->get();
 
-        // $school = School::all();
+        $school = School::all();
 
         // return $result;
-        
-        $grafik1 = School::grafik_01();
-        return view('layouts.idea.grafik', compact('labelsString', 'dataPointsString', 'school', 'result', 'grafik1', 'grafik2'));
-        // return [$labelsString, $dataPointsString, $school, $result'];
+        // return $chartOne = Quiz::chartOne();
+        // return view('layouts.idea.grafik', compact('labelsString', 'dataPointsString', 'school', 'result'));
+        // return [$labelsString, $dataPointsString, $school, $result, $chartOne, $chartOne, $chartThree];
+        return [$labelsString, $dataPointsString, $school, $chartOne, $chartOne, $chartThree];
 
-        // return $grafik1 = School::grafik_01();
+        // return $chartOne = School::grafik_01();
+        // return response()->json([
+        //     'result' => $result,
+        //     'labels' => $labels,
+        //     'dataPoints' => $dataPoints
+        // ]);
     }
 }
 
