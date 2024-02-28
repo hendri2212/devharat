@@ -58,13 +58,14 @@
                 <div class="row justify-content-between">
                     <p class="text-muted">Silahkan di isi data sekolah kalian yaa...</p>
                     <div class="mb-3">
-                        <label for="school" class="form-label">Sekolah</label>
-                        <select name="school_id" id="school" class="form-control">
-                            @foreach ($school as $item)
-                                <option value="{{ $item->id }}">{{ $item->school }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    <label for="school" class="form-label">Sekolah</label>
+                    <select name="school_id" id="school" class="form-control">
+                        @foreach ($schools as $item)
+                            <option value="{{ $item->id }}">{{ $item->school }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                     <div class="mb-3">
                         <label for="class" class="form-label">Kelas</label>
                         <input type="text" name="class" class="form-control" id="class">
