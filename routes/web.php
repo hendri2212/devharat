@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\Frontend\NewsController as FrontendNews;
 use App\Http\Controllers\Backend\NewsController as BackendNews;
 
 /*
@@ -39,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/quiz/school', [QuizController::class, 'school']);
     Route::resource('quiz', QuizController::class)->except(['index']);
     Route::get('/chart', [ChartController::class, 'chart'])->name('chart.chart');
-    
+
     Route::resource('school', SchoolController::class);
     Route::get('/ideal', [IdeaController::class, 'ideal']);
 });
