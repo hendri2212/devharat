@@ -58,8 +58,7 @@
                     <ul class="navbar-nav">
                         @auth
                             <li class="nav-item">
-                                {{-- <a class="nav-link active" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a> --}}
-                                <a class="nav-link active" aria-current="page" href="{{ url('/idea') }}">Dashboard</a>
+                                <a class="nav-link active" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a>
                             </li>
                         @else
                             <li class="nav-item">

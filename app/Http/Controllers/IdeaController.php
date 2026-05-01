@@ -91,7 +91,7 @@ class IdeaController extends Controller
         //
     }
 
-    public function ideal() {
+    public function allIdea() {
         if (Auth::user()->id==1) {
             $ideal = Idea::with('user')->orderBy('user_id', 'asc')->get();
             return view('layouts.idea.ideal', ['ideal' => $ideal]);

@@ -29,7 +29,7 @@
                         <x-nav-link href="/member">
                             {{ __('Data Member') }}
                         </x-nav-link>
-                        <x-nav-link href="/ideal">
+                        <x-nav-link href="/allidea">
                             {{ __('Data Idea') }}
                         </x-nav-link>
                         <x-nav-link href="/school">

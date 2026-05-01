@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/chart', [ChartController::class, 'chart'])->name('chart.chart');
     
     Route::resource('school', SchoolController::class);
-    Route::get('/ideal', [IdeaController::class, 'ideal']);
+    Route::get('/allidea', [IdeaController::class, 'allIdea']);
 });
 
 require __DIR__.'/auth.php';

@@ -22,43 +22,50 @@
                                 </select>
                             </div>
 
-                            <div>
-                                <canvas id="myChart" style="max-width: 100%;"></canvas>
+                            <div style="position: relative; height:40vh; width:100%">
+                                <canvas id="myChart"></canvas>
                             </div>
 
                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                            <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
                             <script>
                                 const ctx = document.getElementById('myChart');
                                 new Chart(ctx, {
                                     type: 'pie',
                                     data: {
-                                        labels: <?= $labelsString ?>,
+                                        labels: {!! $labelsString !!},
                                         datasets: [{
-                                            label: '# of Votes',
-                                            data: <?= $dataPointsString ?>,
+                                            label: 'Jumlah Pilihan',
+                                            data: {!! $dataPointsString !!},
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132, 0.7)',
+                                                'rgba(54, 162, 235, 0.7)',
+                                                'rgba(255, 206, 86, 0.7)',
+                                                'rgba(75, 192, 192, 0.7)',
+                                                'rgba(153, 102, 255, 0.7)',
+                                                'rgba(255, 159, 64, 0.7)'
+                                            ],
                                             borderWidth: 1
                                         }]
                                     },
                                     options: {
                                         responsive: true,
                                         maintainAspectRatio: false,
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true
+                                        plugins: {
+                                            legend: {
+                                                position: 'bottom',
                                             }
                                         }
                                     }
                                 });
 
-                            $(document).ready(function() {
-                               $('#school').change(function() {var schoolId = $(this).val();
-                               window.location.href = '?school_id=' + schoolId; 
-                           });
-                         });
+                                $(document).ready(function() {
+                                    $('#school').change(function() {
+                                        var schoolId = $(this).val();
+                                        window.location.href = '?school_id=' + schoolId; 
+                                    });
+                                });
                             </script>
                         </div>
                     </div>
