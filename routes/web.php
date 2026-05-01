@@ -21,21 +21,18 @@ use App\Http\Controllers\SchoolController;
 */
 
 Route::get('/', [Controller::class, 'index']);
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 Route::get('/quiz', [QuizController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
     Route::resource('member', MemberController::class);
     Route::resource('idea', IdeaController::class);
     Route::resource('user', UserController::class);
     Route::get('/quiz/school', [QuizController::class, 'school']);
     Route::resource('quiz', QuizController::class)->except(['index']);
     Route::get('/chart', [ChartController::class, 'chart'])->name('chart.chart');
-    
     Route::resource('school', SchoolController::class);
     Route::get('/allidea', [IdeaController::class, 'allIdea']);
 });

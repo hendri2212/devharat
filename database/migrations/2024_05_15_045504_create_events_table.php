@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPhoneUsersTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddPhoneUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function($table) {
-            $table->char('phone')->default('0')->after('email_verified_at');
+        Schema::create('events', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 200);
+            $table->text('description')->nullable();
+            $table->date('event_date')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddPhoneUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function($table) {
-            $table->dropColumn('phone');
-        });
+        Schema::dropIfExists('events');
     }
 }
