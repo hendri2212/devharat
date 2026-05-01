@@ -51,7 +51,7 @@ class GalleryController extends Controller
         }
 
         // Save compressed image to public disk
-        Storage::disk('public')->put($path, $image->toJpeg(70)->encode());
+        Storage::disk('public')->put($path, (string) $image->toJpeg(70));
 
         Gallery::create([
             'event_id' => $request->event_id,
@@ -98,7 +98,7 @@ class GalleryController extends Controller
                 $image->scale(width: 1200);
             }
 
-            Storage::disk('public')->put($path, $image->toJpeg(70)->encode());
+            Storage::disk('public')->put($path, (string) $image->toJpeg(70));
             $data['image'] = $path;
         }
 
