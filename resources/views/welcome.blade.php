@@ -46,7 +46,7 @@
     <body>
         <nav class="navbar navbar-expand-lg fixed-top bg-white" id="fixTop">
             <div class="container px-4">
-                <a href="#" class="text-decoration-none text-reset">
+                <a href="/" class="text-decoration-none text-reset">
                     <h1 class="fw-bold mb-0">Dev<span class="text-success">Harat</span></h1>
                     <p class="mb-0 fw-bold">Developer Harat Kotabaru</p>
                 </a>
@@ -56,6 +56,12 @@
                 @if (Route::has('login'))
                 <div class="collapse navbar-collapse flex-row-reverse bg-white" id="navbarNav">
                     <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/event') }}">Event</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/gallery') }}">Gallery</a>
+                        </li>
                         @auth
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a>

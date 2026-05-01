@@ -8,6 +8,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,8 @@ use App\Http\Controllers\SchoolController;
 
 Route::get('/', [Controller::class, 'index']);
 Route::get('/quiz', [QuizController::class, 'index']);
+Route::get('/event', [EventController::class, 'indexPublic']);
+Route::get('/gallery', [GalleryController::class, 'indexPublic']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
@@ -35,6 +39,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/chart', [ChartController::class, 'chart'])->name('chart.chart');
     Route::resource('school', SchoolController::class);
     Route::get('/allidea', [IdeaController::class, 'allIdea']);
+    Route::resource('event-manage', EventController::class);
+    Route::resource('gallery-manage', GalleryController::class);
 });
 
 require __DIR__.'/auth.php';

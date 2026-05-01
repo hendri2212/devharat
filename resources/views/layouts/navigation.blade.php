@@ -35,6 +35,12 @@
                         <x-nav-link href="/school">
                             {{ __('Data Sekolah') }}
                         </x-nav-link>
+                        <x-nav-link href="/event-manage">
+                            {{ __('Data Event') }}
+                        </x-nav-link>
+                        <x-nav-link href="/gallery-manage">
+                            {{ __('Data Gallery') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
