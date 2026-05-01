@@ -9,12 +9,13 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- Chart Column -->
-                <div class="col-md-6">
-                    <div class="max-w-md mx-auto bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="col-md-6 mb-4">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-4">
                             <div class="mb-3">
-                                <label for="school" class="form-label">Sekolah</label>
-                                <select name="school_id" id="school" class="form-control">
+                                <label for="school" class="form-label font-bold">Pilih Sekolah</label>
+                                <select name="school_id" id="school" class="form-control rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    <option value="0">Semua Sekolah</option>
                                     @foreach ($school as $item)
                                         <option value="{{ $item->id }}" 
                                         {{ request('school_id') == $item->id ? 'selected' : '' }}>{{ $item->school }}</option>
@@ -71,38 +72,44 @@
                     </div>
                 </div>
 
-                         <!-- Table Column -->
-                         <div class="col-md-6">
-                    <div class="max-w-md mx-auto bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <!-- Table Column -->
+                <div class="col-md-6 mb-4">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-4">
-                            <h2>Bordered Table</h2>
-                            <p>The .table-bordered class adds borders to a table:</p>
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Firstname</th>
-                                        <th>Lastname</th>
-                                        <th>Email</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>john@example.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mary</td>
-                                        <td>Moe</td>
-                                        <td>mary@example.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>July</td>
-                                        <td>Dooley</td>
-                                        <td>july@example.com</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <h2 class="font-bold text-lg mb-2">Daftar User & Pilihan Bidang</h2>
+                            <p class="text-sm text-gray-600 mb-4">Berikut adalah daftar user berdasarkan sekolah yang dipilih:</p>
+                            <div class="overflow-x-auto">
+                                <table class="table-auto w-full border-collapse border border-gray-200">
+                                    <thead>
+                                        <tr class="bg-gray-100 text-gray-700">
+                                            <th class="border border-gray-300 p-2 text-left">No</th>
+                                            <th class="border border-gray-300 p-2 text-left">Nama</th>
+                                            <th class="border border-gray-300 p-2 text-left">Email</th>
+                                            <th class="border border-gray-300 p-2 text-left">Bidang</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-gray-600 text-sm">
+                                        @forelse ($users as $key => $user)
+                                            <tr class="hover:bg-gray-50 transition-colors">
+                                                <td class="border border-gray-300 p-2 text-center">{{ $key + 1 }}</td>
+                                                <td class="border border-gray-300 p-2">{{ $user->name }}</td>
+                                                <td class="border border-gray-300 p-2">{{ $user->email }}</td>
+                                                <td class="border border-gray-300 p-2">
+                                                    <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">
+                                                        {{ $user->community }}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="4" class="border border-gray-300 p-4 text-center text-gray-400">
+                                                    Tidak ada data user untuk sekolah ini.
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

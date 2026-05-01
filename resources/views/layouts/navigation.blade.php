@@ -8,7 +8,7 @@
                     {{-- <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a> --}}
-                    <a href="/idea" class="text-decoration-none text-reset">
+                    <a href="/dashboard" class="text-decoration-none text-reset">
                         <h1 class="fw-bold text-left mb-0 fs-3">Dev<span class="text-success">Harat</span></h1>
                         {{-- <p class="mb-0 fw-bold text-left fs-5">Developer Harat Kotabaru</p> --}}
                     </a>
@@ -17,15 +17,15 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="/idea">
-                        {{ __('Dashboard') }}
+                        {{ __('Idea') }}
                     </x-nav-link>
                     <x-nav-link href="/user/{{ Auth::user()->id }}">
                         {{ __('Data User') }}
                     </x-nav-link>
-                    <x-nav-link href="/chart">
-                        {{ __('Grafik Bidang') }}
-                    </x-nav-link>
                     @if (Auth::user()->id == 1)
+                        <x-nav-link href="/chart">
+                            {{ __('Grafik Bidang') }}
+                        </x-nav-link>
                         <x-nav-link href="/member">
                             {{ __('Data Member') }}
                         </x-nav-link>
@@ -33,8 +33,8 @@
                             {{ __('Data Idea') }}
                         </x-nav-link>
                         <x-nav-link href="/school">
-                        {{ __('Data Sekolah') }}
-                    </x-nav-link>
+                            {{ __('Data Sekolah') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
