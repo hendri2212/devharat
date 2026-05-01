@@ -21,7 +21,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
-                            <textarea name="description" id="description" class="form-control" rows="4" placeholder="Deskripsi event"></textarea>
+                            <textarea name="description" id="description" class="form-control border-secondary rounded-0" rows="4" placeholder="Deskripsi event"></textarea>
                         </div>
                     </div>
                 </div>

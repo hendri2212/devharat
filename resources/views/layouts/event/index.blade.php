@@ -18,24 +18,24 @@
                         </div>
                     @endif
                     <div class="table-responsive">
-                        <table class="table table-striped mt-3">
+                        <table class="table-fixed mt-3">
                             <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Name</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
+                                <tr class="whitespace-nowrap ...">
+                                    <th class="border p-2">No</th>
+                                    <th class="border p-2">Name</th>
+                                    <th class="border p-2">Date</th>
+                                    <th class="border p-2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($events as $key => $event)
                                 <tr>
-                                    <td>{{ $key+1 }}</td>
-                                    <td>{{ $event->name }}</td>
-                                    <td>{{ $event->event_date }}</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <a href="{{ route('event-manage.edit', $event->id) }}" class="rounded-md text-white px-3 py-1.5 bg-green-600 me-2 text-decoration-none">Edit</a>
+                                    <td class="border p-2">{{ $key+1 }}</td>
+                                    <td class="border p-2">{{ $event->name }}</td>
+                                    <td class="border p-2">{{ $event->event_date }}</td>
+                                    <td class="border p-2">
+                                        <div class="flex">
+                                            <a href="{{ route('event-manage.edit', $event->id) }}" class="rounded-md text-white px-3 py-1.5 bg-green-600 mr-2">Edit</a>
                                             <form action="{{ route('event-manage.destroy', $event->id) }}" method="POST" class="inline">
                                                 @csrf
                                                 @method('DELETE')

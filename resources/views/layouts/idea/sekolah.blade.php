@@ -20,18 +20,18 @@
 
                     <div class="mb-3">
                         <label for="school" class="form-label">Daftar Sekolah</label>
-                        <table class="table-auto w-full border-collapse border border-gray-200">
+                        <table class="table-fixed">
                             <thead>
-                                <tr class="bg-gray-100 text-gray-700">
-                                    <th class="border border-gray-300 p-2 text-left w-16">No</th>
-                                    <th class="border border-gray-300 p-2 text-left">Nama Sekolah</th>
+                                <tr class="whitespace-nowrap ...">
+                                    <th class="border p-2">No</th>
+                                    <th class="border p-2">Nama Sekolah</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-gray-600 text-sm">
+                            <tbody>
                                 @foreach ($school as $key => $item)
-                                <tr class="hover:bg-gray-50 transition-colors">
-                                    <td class="border border-gray-300 p-2 text-center">{{ $key+1 }}</td>
-                                    <td class="border border-gray-300 p-2">{{ $item->school }}</td>
+                                <tr>
+                                    <td class="border p-2">{{ $key+1 }}</td>
+                                    <td class="border p-2">{{ $item->school }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

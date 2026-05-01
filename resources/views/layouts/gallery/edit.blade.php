@@ -14,7 +14,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="mb-3">
                             <label for="event_id" class="form-label">Event</label>
-                            <select class="form-control" id="event_id" name="event_id" required>
+                            <select class="form-control border-secondary rounded-0" id="event_id" name="event_id" required>
                                 @foreach ($events as $event)
                                     <option value="{{ $event->id }}" {{ $gallery->event_id == $event->id ? 'selected' : '' }}>{{ $event->name }}</option>
                                 @endforeach
@@ -26,7 +26,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
-                            <textarea name="description" id="description" class="form-control" rows="3">{{ $gallery->description }}</textarea>
+                            <textarea name="description" id="description" class="form-control border-secondary rounded-0" rows="3">{{ $gallery->description }}</textarea>
                         </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">Image (leave blank to keep current)</label>

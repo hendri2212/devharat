@@ -18,28 +18,28 @@
                         </div>
                     @endif
                     <div class="table-responsive">
-                        <table class="table table-striped mt-3">
+                        <table class="table-fixed mt-3">
                             <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Title</th>
-                                    <th>Event</th>
-                                    <th>Image</th>
-                                    <th>Action</th>
+                                <tr class="whitespace-nowrap ...">
+                                    <th class="border p-2">No</th>
+                                    <th class="border p-2">Title</th>
+                                    <th class="border p-2">Event</th>
+                                    <th class="border p-2">Image</th>
+                                    <th class="border p-2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($galleries as $key => $gallery)
                                 <tr>
-                                    <td>{{ $key+1 }}</td>
-                                    <td>{{ $gallery->title }}</td>
-                                    <td>{{ $gallery->event->name ?? 'N/A' }}</td>
-                                    <td>
+                                    <td class="border p-2">{{ $key+1 }}</td>
+                                    <td class="border p-2">{{ $gallery->title }}</td>
+                                    <td class="border p-2">{{ $gallery->event->name ?? 'N/A' }}</td>
+                                    <td class="border p-2">
                                         <img src="{{ asset('storage/'.$gallery->image) }}" alt="{{ $gallery->title }}" class="h-10 w-10 object-cover rounded shadow-sm">
                                     </td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <a href="{{ route('gallery-manage.edit', $gallery->id) }}" class="rounded-md text-white px-3 py-1.5 bg-green-600 me-2 text-decoration-none">Edit</a>
+                                    <td class="border p-2">
+                                        <div class="flex">
+                                            <a href="{{ route('gallery-manage.edit', $gallery->id) }}" class="rounded-md text-white px-3 py-1.5 bg-green-600 mr-2">Edit</a>
                                             <form action="{{ route('gallery-manage.destroy', $gallery->id) }}" method="POST" class="inline">
                                                 @csrf
                                                 @method('DELETE')

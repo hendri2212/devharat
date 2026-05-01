@@ -6,6 +6,8 @@ use App\Models\Gallery;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class GalleryController extends Controller
 {
@@ -35,13 +37,27 @@ class GalleryController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $imagePath = $request->file('image')->store('gallery', 'public');
+        $file = $request->file('image');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $path = 'gallery/' . $filename;
+
+        // Compress image using Intervention Image
+        $manager = new ImageManager(new Driver());
+        $image = $manager->read($file);
+        
+        // Limit width to 1200px
+        if ($image->width() > 1200) {
+            $image->scale(width: 1200);
+        }
+
+        // Save compressed image to public disk
+        Storage::disk('public')->put($path, $image->toJpeg(70)->encode());
 
         Gallery::create([
             'event_id' => $request->event_id,
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $imagePath,
+            'image' => $path,
         ]);
 
         return redirect()->route('gallery-manage.index')->with('success', 'Gallery item created successfully.');
@@ -69,7 +85,21 @@ class GalleryController extends Controller
             if ($gallery_manage->image) {
                 Storage::disk('public')->delete($gallery_manage->image);
             }
-            $data['image'] = $request->file('image')->store('gallery', 'public');
+            
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $path = 'gallery/' . $filename;
+
+            // Compress image
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($file);
+            
+            if ($image->width() > 1200) {
+                $image->scale(width: 1200);
+            }
+
+            Storage::disk('public')->put($path, $image->toJpeg(70)->encode());
+            $data['image'] = $path;
         }
 
         $gallery_manage->update($data);
