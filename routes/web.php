@@ -41,6 +41,20 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/allidea', [IdeaController::class, 'allIdea']);
     Route::resource('event-manage', EventController::class);
     Route::resource('gallery-manage', GalleryController::class);
+
+    //your id not in order? For example, the first table's ID is 1 while the second table's ID is 3.
+    //SANS you just add this code to your School Tabel line
+    //SET @num := 0;
+    //UPDATE schools SET id = @num := (@num+1);
+    //ALTER TABLE schools AUTO_INCREMENT = 1;
+
+    //school route
+    // Route::post('/school', [SchoolController::class, 'store'])->name('school.store');
+    // Route::put('/school/{school}', [SchoolController::class, 'update'])->name('school.update');
+    // Route::post('/school/toggle-status/{id}', [SchoolController::class, 'toggleStatus'])->name('school.toggleStatus');
+    // Route::get('/school/toggle-status/{id}', [SchoolController::class, 'toggleStatus'])->name('school.toggleStatus');
+    // Route::get('/school', [SchoolController::class, 'school']);
+    // Route::delete('/school/{id}', [SchoolController::class, 'destroy'])->name('school.delete');
 });
 
 require __DIR__.'/auth.php';

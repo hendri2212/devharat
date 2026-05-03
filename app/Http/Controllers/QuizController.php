@@ -43,8 +43,8 @@ class QuizController extends Controller
 
     public function school()
     {
-        $school = School::all();
-        return view('layouts/quiz/school', ['school' => $school]);
+    $enabledSchools = School::where('status', 1)->get();
+    return view('layouts/quiz/school', ['schools' => $enabledSchools]);
     }
 
     // public function register()
