@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 my-auto mt-5">
-                    <img alt="kotabaru" fetchpriority="high" width="1000" height="1000" decoding="async" data-nimg="1" class="img-fluid rounded-2 mt-2" src="https://gekrafs.com/wp-content/uploads/2022/08/Profile-Gekrafs-IV.png">
+                    <img alt="kotabaru" fetchpriority="high" width="1000" height="1000" decoding="async" data-nimg="1" class="img-fluid rounded-2 mt-2" src="{{ asset('img/gekrafs-hero.png') }}">
                 </div>
             </div>
         </section>
