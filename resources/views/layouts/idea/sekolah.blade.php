@@ -9,33 +9,48 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form method="post" action="/school" class="mb-5">
+                    <form id="schoolForm" method="post" action="/school" class="mb-5">
                         @csrf
-                        <div class="mb-3">
-                            <label for="school_input" class="form-label">Tambahkan Sekolah Baru</label>
-                            <input type="text" name="school" id="school_input" class="form-control" required>
+                        <div id="methodContainer"></div>
+                        <div class="mb-4">
+                            <label for="school_input" id="formLabel" class="block font-medium text-gray-700">Tambahkan Sekolah Baru</label>
+                            <input type="text" name="school" id="school_input" class="border border-black rounded-none mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-0 focus:border-black" required>
                         </div>
-                        <button type="submit" class="btn btn-primary bg-primary">Tambah Sekolah</button>
+                        <button type="submit" id="submitBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-none transition duration-150 ease-in-out">Tambah Sekolah</button>
+                        <button type="button" id="cancelBtn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-none ml-2 transition duration-150 ease-in-out" onclick="cancelEdit()" style="display: none;">Batal</button>
                     </form>
 
-                    <div class="mb-3">
-                        <label for="school" class="form-label">Daftar Sekolah</label>
-                        <table class="table-fixed">
-                            <thead>
-                                <tr class="whitespace-nowrap ...">
-                                    <th class="border p-2">No</th>
-                                    <th class="border p-2">Nama Sekolah</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($school as $key => $item)
-                                <tr>
-                                    <td class="border p-2">{{ $key+1 }}</td>
-                                    <td class="border p-2">{{ $item->school }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                    <div class="mb-4">
+                        <label for="school" class="block font-medium text-gray-700 mb-2">Daftar Sekolah</label>
+                        <div class="bg-white shadow-sm border border-gray-200 sm:rounded-lg overflow-x-auto">
+                            <table class="w-full text-sm text-left text-gray-500">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 tracking-wider">No</th>
+                                        <th scope="col" class="px-6 py-3 tracking-wider">Nama Sekolah</th>
+                                        <th scope="col" class="px-6 py-3 tracking-wider text-center">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    @foreach ($schools as $key => $item)
+                                    <tr class="bg-white hover:bg-gray-50 transition-colors">
+                                        <td class="px-6 py-4 whitespace-nowrap">{{ $key+1 }}</td>
+                                        <td class="px-6 py-4">{{ $item->school }}</td>
+                                        <td class="px-6 py-4 text-center">
+                                            <div class="inline-flex rounded-none shadow-sm" role="group">
+                                                <button type="button" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-none text-sm font-semibold transition duration-150 ease-in-out" data-name="{{ $item->school }}" onclick="editSchool({{ $item->id }}, this.getAttribute('data-name'))">Edit</button>
+                                                <form action="{{ route('school.destroy', $item->id) }}" method="POST" class="m-0" onsubmit="return confirm('Apakah Anda yakin ingin menghapus sekolah ini?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-none text-sm font-semibold transition duration-150 ease-in-out">Hapus</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,144 +59,38 @@
 </x-app-layout>
 
 <script>
-    function toggleStatus(schoolId) {
-        fetch(`{{ route('school.toggleStatus', ['id' => ':id']) }}`.replace(':id', schoolId), {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-
-            // Handle the response or update UI as needed
-            const checkbox = document.getElementById(`flexSwitchCheck${schoolId}`);
-            if (data.status === 1) {
-                // The school is enabled
-                // Update UI accordingly, e.g., toggle checkbox state or change background color
-                checkbox.checked = true;
-            } else {
-                // The school is disabled
-                // Update UI accordingly
-                checkbox.checked = false;
-            }
-
-            // Display status message
-            document.getElementById('statusMessage').innerText = data.message;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    function editSchool(id, name) {
+        // Isi form dengan data yang dipilih
+        document.getElementById('school_input').value = name;
+        
+        // Ubah tampilan dan aksi form untuk Mode Update
+        document.getElementById('formLabel').innerText = 'Edit Sekolah';
+        document.getElementById('submitBtn').innerText = 'Simpan Perubahan';
+        document.getElementById('cancelBtn').style.display = 'inline-block';
+        
+        const form = document.getElementById('schoolForm');
+        form.action = `/school/${id}`;
+        
+        // Tambahkan @method('PUT') agar terbaca sebagai request UPDATE oleh Laravel
+        document.getElementById('methodContainer').innerHTML = '<input type="hidden" name="_method" value="PUT">';
+        
+        // Fokuskan layar ke form atas
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Function to handle edit button click
-    function editSchool(schoolId, schoolName) {
-    // Set form input values
-        document.getElementById('school').value = schoolName;
-        document.getElementById('school_id').value = schoolId;
-        document.querySelector('button[type="submit"]').innerText = 'Edit Sekolah';
-    
-    // Update form URL and method for editing
-        document.getElementById('schoolForm').action = `{{ route('school.update', ['school' => ':id']) }}`.replace(':id', schoolId);
-        document.getElementById('schoolForm').method = 'POST';
-        document.getElementById('school').setAttribute('data-edit-id', schoolId);
-}
-
-    // Function to handle cancel button click
-    function cancelForm() {
-        // Reset form input
-        document.getElementById('school').value = '';
-        document.getElementById('school_id').value = '';
-        document.getElementById('schoolForm').action = '{{ route('school.store') }}';  // Reset action to add school
-        document.getElementById('schoolForm').method = 'POST';  // Reset method to POST
-        document.getElementById('school').removeAttribute('data-edit-id');
-
-        // Reset button text to "Tambah Sekolah"
-        document.querySelector('button[type="submit"]').innerText = 'Tambah Sekolah';
+    function cancelEdit() {
+        // Kosongkan form
+        document.getElementById('school_input').value = '';
+        
+        // Kembalikan form ke Mode Tambah Baru
+        document.getElementById('formLabel').innerText = 'Tambahkan Sekolah Baru';
+        document.getElementById('submitBtn').innerText = 'Tambah Sekolah';
+        document.getElementById('cancelBtn').style.display = 'none';
+        
+        const form = document.getElementById('schoolForm');
+        form.action = '/school';
+        
+        // Hapus input method PUT
+        document.getElementById('methodContainer').innerHTML = '';
     }
-
-    function deleteSchool(schoolId) {
-        // Confirmation before deletion
-        const confirmDelete = confirm('Apakah Anda yakin ingin menghapus sekolah ini?');
-
-        if (confirmDelete) {
-            // Send DELETE request to the backend
-            fetch(`{{ route('school.delete', ['id' => ':id']) }}`.replace(':id', schoolId), {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                },
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-
-                // Handle the response or update UI as needed
-                if (data.status === 'success') {
-                    // Reset form input after successful deletion
-                    document.getElementById('school').value = '';
-                    document.getElementById('school').removeAttribute('data-edit-id');
-
-                    // Remove table row from UI after successful deletion
-                    const rowToDelete = document.getElementById(`row${schoolId}`);
-                    if (rowToDelete) {
-                        rowToDelete.remove();
-                    } else {
-                        alert('Baris tabel tidak ditemukan.');
-                    }
-
-                    // Reset button text to "Tambah Sekolah"
-                    document.querySelector('button[type="submit"]').innerText = 'Tambah Sekolah';
-                } else {
-                    alert('Gagal menghapus sekolah.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
-    }
-
-    function submitSchoolForm() {
-    event.preventDefault();
-    const schoolId = document.getElementById('school').getAttribute('data-edit-id');
-    const actionUrl = schoolId ? `{{ route('school.update', ['school' => ':id']) }}`.replace(':id', schoolId) : `{{ route('school.store') }}`;
-
-    // Determine the method based on whether it's an edit or add operation
-    const method = schoolId ? 'PUT' : 'POST';
-
-    // Send POST or PUT request to the backend
-    fetch(actionUrl, {
-        method: method,
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-        },
-        body: JSON.stringify({
-            school: document.getElementById('school').value,
-        }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-
-        // Handle the response or update UI as needed
-        if (data.status === 'success') {
-            // Reset form input after successful addition/update
-            document.getElementById('school').value = '';
-            document.getElementById('school').removeAttribute('data-edit-id');
-
-            // Refresh the page after successful addition/update
-            location.reload();
-        } else {
-            alert('Gagal menambah/mengubah sekolah.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
 </script>

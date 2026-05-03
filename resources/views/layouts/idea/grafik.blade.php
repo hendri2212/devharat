@@ -5,11 +5,11 @@
         </h2>
     </x-slot>
 
-    <div class="p-6">
-        <div class="container-fluid">
-            <div class="row">
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- Chart Column -->
-                <div class="col-md-6 mb-4">
+                <div>
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-4">
                             <div class="mb-3">
@@ -73,28 +73,28 @@
                 </div>
 
                 <!-- Table Column -->
-                <div class="col-md-6 mb-4">
+                <div>
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-4">
                             <h2 class="font-bold text-lg mb-2">Daftar User & Pilihan Bidang</h2>
                             <p class="text-sm text-gray-600 mb-4">Berikut adalah daftar user berdasarkan sekolah yang dipilih:</p>
-                            <div class="overflow-x-auto">
-                                <table class="table-auto w-full border-collapse border border-gray-200">
-                                    <thead>
-                                        <tr class="bg-gray-100 text-gray-700">
-                                            <th class="border border-gray-300 p-2 text-left">No</th>
-                                            <th class="border border-gray-300 p-2 text-left">Nama</th>
-                                            <th class="border border-gray-300 p-2 text-left">Email</th>
-                                            <th class="border border-gray-300 p-2 text-left">Bidang</th>
+                            <div class="bg-white shadow-sm border border-gray-200 sm:rounded-lg overflow-x-auto">
+                                <table class="w-full text-sm text-left text-gray-500">
+                                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3 tracking-wider">No</th>
+                                            <th scope="col" class="px-6 py-3 tracking-wider">Nama</th>
+                                            <th scope="col" class="px-6 py-3 tracking-wider">Email</th>
+                                            <th scope="col" class="px-6 py-3 tracking-wider">Bidang</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="text-gray-600 text-sm">
+                                    <tbody class="divide-y divide-gray-200">
                                         @forelse ($users as $key => $user)
-                                            <tr class="hover:bg-gray-50 transition-colors">
-                                                <td class="border border-gray-300 p-2 text-center">{{ $key + 1 }}</td>
-                                                <td class="border border-gray-300 p-2">{{ $user->name }}</td>
-                                                <td class="border border-gray-300 p-2">{{ $user->email }}</td>
-                                                <td class="border border-gray-300 p-2">
+                                            <tr class="bg-white hover:bg-gray-50 transition-colors">
+                                                <td class="px-6 py-4 whitespace-nowrap">{{ $key + 1 }}</td>
+                                                <td class="px-6 py-4">{{ $user->name }}</td>
+                                                <td class="px-6 py-4">{{ $user->email }}</td>
+                                                <td class="px-6 py-4">
                                                     <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">
                                                         {{ $user->community }}
                                                     </span>
@@ -102,7 +102,7 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="4" class="border border-gray-300 p-4 text-center text-gray-400">
+                                                <td colspan="4" class="px-6 py-4 text-center text-gray-500">
                                                     Tidak ada data user untuk sekolah ini.
                                                 </td>
                                             </tr>

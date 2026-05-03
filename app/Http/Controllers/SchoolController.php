@@ -25,7 +25,7 @@ class SchoolController extends Controller
             'status' => 1, // Set default status to 1 (enable)
         ]);
 
-        return response()->json(['status' => 'success', 'message' => 'Sekolah berhasil ditambahkan!']);
+        return redirect()->back()->with('success', 'Sekolah berhasil ditambahkan!');
     }
 
     public function update(Request $request, $id)
@@ -44,28 +44,13 @@ class SchoolController extends Controller
             'school' => $request->input('school'),
         ]);
 
-        return response()->json(['status' => 'success', 'message' => 'Sekolah berhasil diubah!']);
-    }
-
-    public function toggleStatus($id)
-    {
-        $school = School::findOrFail($id);
-        $school->status = $school->status === 0 ? 1 : 0;
-        $school->save();
-
-        return response()->json(['status' => $school->status, 'message' => 'Status sekolah diubah!']);
+        return redirect()->back()->with('success', 'Sekolah berhasil diubah!');
     }
 
     public function destroy($id)
     {
         $school = School::findOrFail($id);
         $school->delete();
-        //if you want refresh id at database devharat | Schools Tabel you just insert this code in your database
-        //add this code in your School Tabel
-        //SET @num := 0;
-        //UPDATE schools SET id = @num := (@num+1);
-        //ALTER TABLE schools AUTO_INCREMENT = 1;
-
-        return response()->json(['status' => 'success', 'message' => 'Sekolah berhasil dihapus!']);
+        return redirect()->back()->with('success', 'Sekolah berhasil dihapus!');
     }
 }

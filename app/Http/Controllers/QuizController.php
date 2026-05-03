@@ -21,7 +21,6 @@ class QuizController extends Controller
         $communities = Community::all();
         $choice = Quiz::with('community')->where('user_id', Auth::user()->id)->get();
         return view('layouts/quiz/choice', compact('communities', 'choice'));
-        // return $choice;
     }
 
     public function store(Request $request)
@@ -43,8 +42,8 @@ class QuizController extends Controller
 
     public function school()
     {
-    $enabledSchools = School::where('status', 1)->get();
-    return view('layouts/quiz/school', ['schools' => $enabledSchools]);
+        $enabledSchools = School::all();
+        return view('layouts/quiz/school', ['schools' => $enabledSchools]);
     }
 
     // public function register()
@@ -52,19 +51,9 @@ class QuizController extends Controller
     //     return view('layouts/quiz/register');
     // }
 
-    /**
-     * Menanggapi hasil pilihan pengguna.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function processUserSelection(Request $request)
     {
         $selectedSubsektor = $request->input('subsektor');
-
-        // Lakukan sesuatu dengan hasil pilihan pengguna
-        // Misalnya, simpan ke dalam database atau tampilkan di halaman lain
-
         return response()->json(['message' => 'Pilihan pengguna: ' . $selectedSubsektor]);
     }
 }

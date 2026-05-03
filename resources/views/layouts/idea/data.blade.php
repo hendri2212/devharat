@@ -14,26 +14,28 @@
                             Whatsapp Anda {{ Auth::user()->phone }}. Silahkan update nomor Whatsapp di menu Data User atau klik tombol berikut <a href="/user/{{ Auth::user()->id }}" class='bg-white px-2.5 py-0.5 rounded text-gray-800'>Data User</a>
                         </div>
                     @endif
-                    <a href="/idea/create" class="rounded-md text-white px-3 py-1.5 bg-blue-600">Tambahkan Ide</a>
+                    <a href="/idea/create" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-none transition duration-150 ease-in-out inline-block">Tambahkan Ide</a>
                     {{-- You're logged in! --}}
-                    <div class="table-responsive">
-                        <table class="table table-striped mt-3">
-                            <thead>
-                                <tr class="whitespace-nowrap ...">
-                                    <th>No</th>
-                                    <th>Nama Aplikasi</th>
-                                    <th colspan="2">Deskripsi Aplikasi</th>
+                    <div class="bg-white shadow-sm border border-gray-200 sm:rounded-lg overflow-x-auto mt-4">
+                        <table class="w-full text-sm text-left text-gray-500">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 tracking-wider">No</th>
+                                    <th scope="col" class="px-6 py-3 tracking-wider">Nama Aplikasi</th>
+                                    <th scope="col" class="px-6 py-3 tracking-wider" colspan="2">Deskripsi Aplikasi</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="divide-y divide-gray-200">
                                 {{-- @foreach ($ide ?? '' as $key => $data) --}}
                                 @foreach ($ide as $key => $data)
-                                <tr>
-                                    <td>{{ $key+1 }}</td>
-                                    <td>{{ $data->app_name }}</td>
-                                    <td>{{ Str::limit($data->description, 150, '...') }}</td>
-                                    <td>
-                                        <a href="idea/{{ $data->id }}" class="rounded-md text-white px-3 py-1.5 bg-green-600">Lihat</a>
+                                <tr class="bg-white hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $key+1 }}</td>
+                                    <td class="px-6 py-4">{{ $data->app_name }}</td>
+                                    <td class="px-6 py-4">{{ Str::limit($data->description, 150, '...') }}</td>
+                                    <td class="px-6 py-4 text-center">
+                                        <div class="inline-flex rounded-none shadow-sm" role="group">
+                                            <a href="idea/{{ $data->id }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1.5 rounded-none text-sm font-semibold transition duration-150 ease-in-out inline-block flex items-center">Lihat</a>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach

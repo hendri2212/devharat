@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{ route('event-manage.create') }}" class="rounded-md text-white px-3 py-1.5 bg-blue-600">
+                    <a href="{{ route('event-manage.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-none transition duration-150 ease-in-out inline-block">
                         Add Event
                     </a>
                     @if (session('success'))
@@ -17,29 +17,29 @@
                             {{ session('success') }}
                         </div>
                     @endif
-                    <div class="table-responsive">
-                        <table class="table-fixed mt-3">
-                            <thead>
-                                <tr class="whitespace-nowrap ...">
-                                    <th class="border p-2">No</th>
-                                    <th class="border p-2">Name</th>
-                                    <th class="border p-2">Date</th>
-                                    <th class="border p-2">Action</th>
+                    <div class="bg-white shadow-sm border border-gray-200 sm:rounded-lg overflow-x-auto mt-3">
+                        <table class="w-full text-sm text-left text-gray-500">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 tracking-wider">No</th>
+                                    <th scope="col" class="px-6 py-3 tracking-wider">Name</th>
+                                    <th scope="col" class="px-6 py-3 tracking-wider">Date</th>
+                                    <th scope="col" class="px-6 py-3 tracking-wider text-center">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="divide-y divide-gray-200">
                                 @foreach ($events as $key => $event)
-                                <tr>
-                                    <td class="border p-2">{{ $key+1 }}</td>
-                                    <td class="border p-2">{{ $event->name }}</td>
-                                    <td class="border p-2">{{ $event->event_date }}</td>
-                                    <td class="border p-2">
-                                        <div class="flex">
-                                            <a href="{{ route('event-manage.edit', $event->id) }}" class="rounded-md text-white px-3 py-1.5 bg-green-600 mr-2">Edit</a>
-                                            <form action="{{ route('event-manage.destroy', $event->id) }}" method="POST" class="inline">
+                                <tr class="bg-white hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $key+1 }}</td>
+                                    <td class="px-6 py-4">{{ $event->name }}</td>
+                                    <td class="px-6 py-4">{{ $event->event_date }}</td>
+                                    <td class="px-6 py-4 text-center">
+                                        <div class="inline-flex rounded-none shadow-sm" role="group">
+                                            <a href="{{ route('event-manage.edit', $event->id) }}" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-none text-sm font-semibold transition duration-150 ease-in-out flex items-center">Edit</a>
+                                            <form action="{{ route('event-manage.destroy', $event->id) }}" method="POST" class="m-0" onsubmit="return confirm('Are you sure?')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="rounded-md text-white px-3 py-1.5 bg-red-600 border-0" onclick="return confirm('Are you sure?')">Delete</button>
+                                                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-none text-sm font-semibold transition duration-150 ease-in-out h-full">Delete</button>
                                             </form>
                                         </div>
                                     </td>
